@@ -98,7 +98,7 @@ final class StackedViewController: UIViewController, ListAdapterDataSource, UISc
             }
         }
 
-        if !refreshing && velocity.y < -0.05 {
+        if !refreshing && targetContentOffset.pointee.y < -44 {
             refreshing = true
             adapter.performUpdates(animated: true, completion: nil)
             DispatchQueue.global(qos: .default).async {

@@ -1,0 +1,6 @@
+framework module TBEmptyDataSet {
+  umbrella header "TBEmptyDataSet-umbrella.h"
+
+  export *
+  module * { export * }
+}

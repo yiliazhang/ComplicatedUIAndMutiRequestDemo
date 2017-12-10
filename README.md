@@ -15,7 +15,7 @@
 
 
 
-##Requirements
+## Requirements
 
 - Xcode 9.0+
 
@@ -25,9 +25,9 @@
 
 - CocoaPods
 
-  ​
 
-##项目框架内容：
+
+## 项目框架内容：
 
 * `StackedViewController` ：展示所有内容的 ViewController。
   * 实现了 `ListAdapterDataSource`(功能参考`IGListKit`)；
@@ -46,20 +46,19 @@
 
 * `YILUtilKit`：  部分项目用到的东西，从以前的项目中一把抓过去了，可能有些内容比较冗余。
 
-  ​
 
 
 
-##项目中的多请求处理：
+## 项目中的多请求处理：
 只是用到了GCD DispatchSemaphore。后续再考虑别的方式优化。
 
 
 
-##其他：
+## 其他：
 项目中也考虑到了加载超大图，和超大量网络图片。目前效果来看，差强人意。
 
 
 
-##鸣谢！
+## 鸣谢！
 
 感谢出题者带给我两天不睡不着觉的思考。

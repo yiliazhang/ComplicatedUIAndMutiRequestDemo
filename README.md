@@ -50,7 +50,7 @@
 
 
 ## 项目中的多请求处理：
-只是用到了GCD DispatchSemaphore。后续再考虑别的方式优化。
+只是用到了GCD DispatchSemaphore。后续再考虑别的方式优化。项目中是用 sleep 方式模仿线程耗时。`spaceship.jpg`是超大像素的图片。
 
 
 

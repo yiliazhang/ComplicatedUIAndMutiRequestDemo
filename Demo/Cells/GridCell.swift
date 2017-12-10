@@ -23,7 +23,7 @@ class GridCell: UICollectionViewCell {
 
     }()
 
-    /// backgroundImageView
+    /// iconImageView
      lazy var iconImageView = { () -> UIImageView in
         let imageView = UIImageView()
         return imageView

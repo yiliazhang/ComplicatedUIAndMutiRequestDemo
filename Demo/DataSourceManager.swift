@@ -17,12 +17,18 @@ let semaphore = DispatchSemaphore(value: 6)
     static let shared = DataSourceManager()
     weak var delegate: UpdateData?
 
-    open var items: [DemoItem] = []
+    private var _items: [DemoItem] = []
+
+    @objc dynamic var items: [DemoItem] {
+        return _items
+    }
+
     private var itemOne = DemoItem()
     private var itemTwo = DemoItem()
     private var itemThree = DemoItem()
     private var itemFour = DemoItem()
     private var itemFive = DemoItem()
+
     private var currentPageCount = 0 {
         willSet {
             if newValue == 0 {
@@ -30,6 +36,7 @@ let semaphore = DispatchSemaphore(value: 6)
             }
         }
     }
+
     private init() {
 
     }
@@ -50,7 +57,7 @@ let semaphore = DispatchSemaphore(value: 6)
 
 
     private func clearData() {
-        items = []
+        _items = []
         itemOne = DemoItem()
         itemTwo = DemoItem()
         itemThree = DemoItem()
@@ -64,12 +71,12 @@ let semaphore = DispatchSemaphore(value: 6)
             }
 
             if self.items.count > (atIndex - 1) {
-                self.items.insert(item, at: atIndex)
+                self._items.insert(item, at: atIndex)
             } else {
-                self.items.append(item)
+                self._items.append(item)
             }
         } else {
-            self.items.append(item)
+            self._items.append(item)
         }
         self.delegate?.update()
     }

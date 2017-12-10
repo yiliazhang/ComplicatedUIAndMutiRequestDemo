@@ -9,8 +9,7 @@
 import UIKit
 import IGListKit
 
- final class DemoItem: NSObject {
-
+final class DemoItem: NSObject {
     private var _sectionControllerNames: [String : [ListDiffable]] = [:]
 
     var sectionControllerNames: [String : [ListDiffable]] {
@@ -72,7 +71,6 @@ extension DemoItem: ListDiffable {
         self.viewController = viewController
         self.viewController.title = title
     }
-
 }
 
 extension GridItem: ListDiffable {

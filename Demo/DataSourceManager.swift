@@ -23,12 +23,6 @@ let semaphore = DispatchSemaphore(value: 6)
         return _items
     }
 
-    private var itemOne = DemoItem()
-    private var itemTwo = DemoItem()
-    private var itemThree = DemoItem()
-    private var itemFour = DemoItem()
-    private var itemFive = DemoItem()
-
     private var currentPageCount = 0 {
         willSet {
             if newValue == 0 {
@@ -43,10 +37,12 @@ let semaphore = DispatchSemaphore(value: 6)
 
     public func startRequests() {
         currentPageCount = 0
-        startItemsRequest(itemOne, atIndex: 0)
-        startItemsTwoRequest(itemTwo, atIndex: 1)
-        startItemsThreeRequest(itemThree, atIndex: 2)
-        startItemsFourRequest(itemFour, atIndex: 3)
+
+        ///下面的atIndex 写的这么具体是防止各个线程完成顺序不一样打乱了布局先后上下结构
+        startItemsRequest(DemoItem(), atIndex: 0)
+        startItemsTwoRequest(DemoItem(), atIndex: 1)
+        startItemsThreeRequest(DemoItem(), atIndex: 2)
+        startItemsFourRequest(DemoItem(), atIndex: 3)
     }
 
     public func loadMoreRequest() {
@@ -55,14 +51,8 @@ let semaphore = DispatchSemaphore(value: 6)
         startItemsFourRequest(DemoItem(), atIndex: items.count)
     }
 
-
     private func clearData() {
-        _items = []
-        itemOne = DemoItem()
-        itemTwo = DemoItem()
-        itemThree = DemoItem()
-        itemFour = DemoItem()
-        itemFive = DemoItem()
+        _items.removeAll()
     }
     private func insert(_ item: DemoItem, atIndex: Int) {
         if self.items.count > 0 {
@@ -85,13 +75,12 @@ let semaphore = DispatchSemaphore(value: 6)
         ///网格
         let group = DispatchGroup()
         let queueOne = DispatchQueue(label: "one")
-//        let queueTwo = DispatchQueue(label: "two")
+
         let queueThree = DispatchQueue(label: "three")
-//        let queueFour = DispatchQueue(label: "four")
+
 
         queueOne.async(group: group) {
         semaphore.wait()
-            // fake background loading task
 //            sleep(1)
             semaphore.signal()
             DispatchQueue.main.async {
@@ -108,7 +97,7 @@ let semaphore = DispatchSemaphore(value: 6)
         ///
         queueThree.async(group: group) {
             semaphore.wait()
-            // fake background loading task
+
 //            sleep(1)
             semaphore.signal()
             DispatchQueue.main.async {
@@ -144,9 +133,6 @@ let semaphore = DispatchSemaphore(value: 6)
     private func startItemsTwoRequest(_ item :DemoItem, atIndex: Int)  {
         let group = DispatchGroup()
         let queueFive = DispatchQueue(label: "five")
-//        let queueTwo = DispatchQueue(label: "two")
-//        let queueThree = DispatchQueue(label: "three")
-//        let queueFour = DispatchQueue(label: "four")
 
         ///网格
         queueFive.async(group: group) {
@@ -177,7 +163,7 @@ let semaphore = DispatchSemaphore(value: 6)
         ///
         queueSix.async(group: group) {
             semaphore.wait()
-            // fake background loading task
+
             sleep(2)
             semaphore.signal()
             DispatchQueue.main.async {
@@ -188,7 +174,7 @@ let semaphore = DispatchSemaphore(value: 6)
                     let width = Int(arc4random() % 300) + 20
                     tmpItems.append(GridItem(backgroundImageURL: "https://unsplash.it/" + width.description + "/" + width.description))
                 }
-//                NSLog("Three GridSectionController")
+
                 let classString = GridSectionController.description()
                 item[classString] = tmpItems
             }
@@ -202,7 +188,6 @@ let semaphore = DispatchSemaphore(value: 6)
             DispatchQueue.main.async {
                 let tmpItems = [GridItem(title: "123"), GridItem(title: "456"),
                                 GridItem(title: "789"), GridItem(title: "1010")]
-//                NSLog("Three HorizontalSectionController")
                 let classString = HorizontalSectionController.description()
                 item[classString] = tmpItems
             }

@@ -13,15 +13,20 @@ let semaphore = DispatchSemaphore(value: 6)
     func update()
 }
 
-@objcMembers class DataSourceManager {
+@objcMembers class DataSourceManager: NSObject {
     static let shared = DataSourceManager()
+
     weak var delegate: UpdateData?
 
     private var _items: [DemoItem] = []
-
     @objc dynamic var items: [DemoItem] {
         return _items
     }
+
+    private var loading = false
+    private var refreshing = false
+    private let loadingMoreSpinToken = "loadingMoreSpinToken"
+    private let refreshSpinToken = "refreshSpinToken"
 
     private var currentPageCount = 0 {
         willSet {
@@ -31,8 +36,8 @@ let semaphore = DispatchSemaphore(value: 6)
         }
     }
 
-    private init() {
-
+    private override init() {
+        super.init()
     }
 
     public func startRequests() {
@@ -55,12 +60,12 @@ let semaphore = DispatchSemaphore(value: 6)
         _items.removeAll()
     }
     private func insert(_ item: DemoItem, atIndex: Int) {
-        if self.items.count > 0 {
-            if self.items.contains(item) {
+        if self._items.count > 0 {
+            if self._items.contains(item) {
                 return
             }
 
-            if self.items.count > (atIndex - 1) {
+            if self._items.count > (atIndex - 1) {
                 self._items.insert(item, at: atIndex)
             } else {
                 self._items.append(item)
@@ -188,6 +193,7 @@ let semaphore = DispatchSemaphore(value: 6)
             DispatchQueue.main.async {
                 let tmpItems = [GridItem(title: "123"), GridItem(title: "456"),
                                 GridItem(title: "789"), GridItem(title: "1010")]
+
                 let classString = HorizontalSectionController.description()
                 item[classString] = tmpItems
             }
@@ -224,6 +230,79 @@ let semaphore = DispatchSemaphore(value: 6)
         }
         group.notify(queue: DispatchQueue.main) {
             self.insert(item, atIndex: atIndex)
+        }
+    }
+}
+
+// MARK - : ListAdapterDataSource
+extension DataSourceManager: ListAdapterDataSource {
+
+    func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
+        var objects: [ListDiffable] = self._items
+        if loading {
+            objects.append(loadingMoreSpinToken as ListDiffable)
+        }
+        if refreshing {
+            objects.insert(refreshSpinToken as ListDiffable, at: 0)
+        }
+        return objects
+    }
+
+    func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
+        if let obj = object as? String, (obj == loadingMoreSpinToken || obj == refreshSpinToken) {
+            return spinnerSectionController()
+        } else {
+            if let myObject = object as? DemoItem {
+                let sectionControllers = myObject.sectionControllerNames.map { (key, _ ) -> ListSectionController in
+                    if let sectionController = key.swiftClass() as? ListSectionController {
+                        return sectionController
+                    }
+                    return ListSectionController()
+                }
+                let sectionController = ListStackedSectionController(sectionControllers: sectionControllers)
+                sectionController.inset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
+                return sectionController
+            } else  {
+                return ListSectionController()
+            }
+        }
+    }
+    func emptyView(for listAdapter: ListAdapter) -> UIView? { return nil }
+}
+
+// MARK - : UIScrollViewDelegate
+
+extension DataSourceManager: UIScrollViewDelegate {
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView,
+                                   withVelocity velocity: CGPoint,
+                                   targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let distance = scrollView.contentSize.height - (targetContentOffset.pointee.y + scrollView.bounds.height)
+        if !loading && distance < 200 {
+            loading = true
+            delegate?.update()
+            DispatchQueue.global(qos: .default).async {
+                // fake background loading task
+                sleep(2)
+                DispatchQueue.main.async {
+                    self.loading = false
+                    DataSourceManager.shared.loadMoreRequest()
+                    self.delegate?.update()
+                }
+            }
+        }
+
+        if !refreshing && targetContentOffset.pointee.y <= -20 {
+            refreshing = true
+            delegate?.update()
+            DispatchQueue.global(qos: .default).async {
+                // fake background loading task
+                sleep(2)
+                DispatchQueue.main.async {
+                    self.refreshing = false
+                    DataSourceManager.shared.startRequests()
+                    self.delegate?.update()
+                }
+            }
         }
     }
 }

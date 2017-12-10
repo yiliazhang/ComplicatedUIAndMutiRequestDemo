@@ -50,7 +50,7 @@ let semaphore = DispatchSemaphore(value: 6)
         startItemsFourRequest(DemoItem(), atIndex: 3)
     }
 
-    public func loadMoreRequest() {
+    private func loadMoreRequest() {
         currentPageCount = currentPageCount + 1
         //TODO: - 新增数据请求
         startItemsFourRequest(DemoItem(), atIndex: items.count)
@@ -59,6 +59,7 @@ let semaphore = DispatchSemaphore(value: 6)
     private func clearData() {
         _items.removeAll()
     }
+
     private func insert(_ item: DemoItem, atIndex: Int) {
         if self._items.count > 0 {
             if self._items.contains(item) {
@@ -80,9 +81,7 @@ let semaphore = DispatchSemaphore(value: 6)
         ///网格
         let group = DispatchGroup()
         let queueOne = DispatchQueue(label: "one")
-
         let queueThree = DispatchQueue(label: "three")
-
 
         queueOne.async(group: group) {
         semaphore.wait()
@@ -232,9 +231,11 @@ let semaphore = DispatchSemaphore(value: 6)
             self.insert(item, atIndex: atIndex)
         }
     }
+
 }
 
 // MARK - : ListAdapterDataSource
+
 extension DataSourceManager: ListAdapterDataSource {
 
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
@@ -267,7 +268,14 @@ extension DataSourceManager: ListAdapterDataSource {
             }
         }
     }
-    func emptyView(for listAdapter: ListAdapter) -> UIView? { return nil }
+
+    func emptyView(for listAdapter: ListAdapter) -> UIView? {
+        let button = UIButton(type: .roundedRect)
+        button.addTarget(self, action: #selector(DataSourceManager.startRequests), for: .touchUpInside)
+        button.setTitleColor(UIColor.appTintColor, for: .normal)
+        button.setTitle("点击刷新", for: .normal)
+        return button
+    }
 }
 
 // MARK - : UIScrollViewDelegate

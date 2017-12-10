@@ -43,7 +43,7 @@ class AppInitializer {
         YILSettings.shared[kCurrentUser] = nil
     }
 
-    ///
+    /// 设置 rootViewController
     class func rootViewController() -> UIViewController {
         return UINavigationController(rootViewController: StackedViewController())
     }

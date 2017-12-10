@@ -97,8 +97,8 @@ final class StackedViewController: UIViewController, ListAdapterDataSource, UISc
                 }
             }
         }
-
-        if !refreshing && targetContentOffset.pointee.y < -44 {
+        NSLog("y----=\(targetContentOffset.pointee.y)")
+        if !refreshing && targetContentOffset.pointee.y <= -20 {
             refreshing = true
             adapter.performUpdates(animated: true, completion: nil)
             DispatchQueue.global(qos: .default).async {

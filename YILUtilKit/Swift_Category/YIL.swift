@@ -26,6 +26,7 @@ public extension YILCompatible {
     }
 }
 
+extension UICollectionViewCell: YILCompatible{}
 extension UIViewController: YILCompatible{}
 extension UIImage: YILCompatible{}
 extension UIView: YILCompatible{}

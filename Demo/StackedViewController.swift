@@ -14,6 +14,7 @@
 
 import UIKit
 import IGListKit
+import Moya
 
 final class StackedViewController: UIViewController {
 
@@ -23,15 +24,22 @@ final class StackedViewController: UIViewController {
 
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
+    lazy var dataSourceManager: DataSourceManager = {
+        return DataSourceManager()
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = UIColor(white: 0.95, alpha: 1)
         view.addSubview(collectionView)
         adapter.collectionView = collectionView
-        adapter.dataSource = DataSourceManager.shared
-        adapter.scrollViewDelegate = DataSourceManager.shared
-        DataSourceManager.shared.delegate = self
-        DataSourceManager.shared.startRequests()
+        adapter.dataSource = dataSourceManager
+        adapter.scrollViewDelegate = dataSourceManager
+        dataSourceManager.delegate = self
+        let itemOne = DemoItem(HorizontalSectionController.self, modelType: GridItem.self, cellClass: GridCell.self)
+        itemOne.completion =  { item in
+            self.dataSourceManager.append(itemOne)
+        }
     }
 
     override func viewDidLayoutSubviews() {
@@ -41,6 +49,10 @@ final class StackedViewController: UIViewController {
 }
 
 extension StackedViewController: UpdateData {
+    func reloadItem(_ atSections: IndexSet) {
+        self.collectionView.reloadSections(atSections)
+    }
+
     func update() {
         self.adapter.performUpdates(animated: true, completion: nil)
     }

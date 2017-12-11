@@ -16,9 +16,8 @@ import UIKit
 import IGListKit
 
 final class HorizontalSectionController: ListSectionController, ListAdapterDataSource {
-    var items: [GridItem] = []
+    var items: [ListDiffable] = []
     var object: DemoItem?
-
     lazy var adapter: ListAdapter = {
         let adapter = ListAdapter(updater: ListAdapterUpdater(),
                                     viewController: self.viewController)
@@ -39,14 +38,12 @@ final class HorizontalSectionController: ListSectionController, ListAdapterDataS
         adapter.collectionView = cell.collectionView
         return cell
     }
-
     override func didUpdate(to object: Any) {
         self.object = object as? DemoItem
-        let controllerString = HorizontalSectionController.description()
         items.removeAll()
         if let myObject = self.object,
-            let tmpItems = myObject[controllerString] as? [GridItem] {
-            items.append(contentsOf: tmpItems)
+            !myObject.items.isEmpty {
+            items.append(contentsOf: myObject.items)
         }
     }
 
@@ -62,11 +59,5 @@ final class HorizontalSectionController: ListSectionController, ListAdapterDataS
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
         return nil
-    }
-
-}
-extension HorizontalSectionController: UpdateData {
-    func update() {
-        //TODO: - 待实现
     }
 }

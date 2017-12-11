@@ -16,8 +16,9 @@ import UIKit
 import IGListKit
 import Kingfisher
 final class GridSectionController: ListSectionController {
-    private var items: [GridItem] = []
-    var object: DemoItem?
+
+    private var items: [ListDiffable] = []
+
     override init() {
         super.init()
         self.minimumInteritemSpacing = 1
@@ -25,13 +26,6 @@ final class GridSectionController: ListSectionController {
     }
 
     override func didUpdate(to object: Any) {
-        self.object = object as? DemoItem
-        let controllerString = GridSectionController.description()
-        items.removeAll()
-        if let myObject = self.object,
-            let tmpItems = myObject[controllerString] as? [GridItem] {
-                items.append(contentsOf: tmpItems)
-        }
     }
 
     override func numberOfItems() -> Int {
@@ -45,28 +39,51 @@ final class GridSectionController: ListSectionController {
     }
 
     override func cellForItem(at index: Int) -> UICollectionViewCell {
+//        guard let _ = _modelType else {
+//            return UICollectionViewCell()
+//        }
+//        if let nib = _cellNib {
+//
+//        } else {
+//            if let cellClass = _cellType {
+//                guard let nibCell = collectionContext?.dequeueReusableCell(withNibName: "NibSelfSizingCell",
+//                                                                           bundle: nil,
+//                                                                           for: self,
+//                                                                           at: index) as? NibSelfSizingCell else {
+//                                                                            fatalError()
+//                }
+//            } else {
+//                assert(false, "cell class 不存在？")
+//                return UICollectionViewCell()
+//            }
+//        }
         let cell = collectionContext!.dequeueReusableCell(of: GridCell.self, for: self, at: index) as! GridCell
-        let value = items[index]
-        //加载大图
-        if !value.backgroundImageURL.isEmpty,
-            let url = URL(string: value.backgroundImageURL) {
-            cell.backgroundImageView.kf.setImage(with: url, placeholder: UIImage(named: "spaceship.jpg"), options: nil, progressBlock: nil, completionHandler: nil)
-        } else {
-            cell.backgroundImageView.image = nil
-        }
-        if value.imageName.isEmpty {
-            cell.iconImageView.image = nil
-        } else {
-            cell.iconImageView.image = UIImage(named: value.imageName)
-        }
-        cell.label.text = value.title
+
+
+//        nibCell.contentLabel.text = text
+//
+//        let value = items[index]
+//        //加载大图
+//        if !value.backgroundImageURL.isEmpty,
+//            let url = URL(string: value.backgroundImageURL) {
+//            cell.backgroundImageView.kf.setImage(with: url, placeholder: UIImage(named: "spaceship.jpg"), options: nil, progressBlock: nil, completionHandler: nil)
+//        } else {
+//            cell.backgroundImageView.image = nil
+//        }
+//        if value.imageName.isEmpty {
+//            cell.iconImageView.image = nil
+//        } else {
+//            cell.iconImageView.image = UIImage(named: value.imageName)
+//        }
+//        cell.label.text = value.title
         return cell
     }
 
     override func didSelectItem(at index: Int) {
-        let controller = items[index].viewController
-        controller.title = items[index].title
-        controller.hidesBottomBarWhenPushed = true
-        viewController?.navigationController?.pushViewController(controller, animated: true)
+//        let controller = items[index].viewController
+//        controller.title = items[index].title
+//        controller.hidesBottomBarWhenPushed = true
+//        viewController?.navigationController?.pushViewController(controller, animated: true)
     }
 }
+

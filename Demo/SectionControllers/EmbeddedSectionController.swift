@@ -31,22 +31,7 @@ final class EmbeddedSectionController: ListSectionController {
         guard let cell = collectionContext?.dequeueReusableCell(of: GridCell.self, for: self, at: index) as? GridCell else {
             fatalError()
         }
-        let value = text
-        //加载大图
-        if let image = value?.backgroundImageName,
-            !image.isEmpty {
-            cell.backgroundImageView.image = UIImage(named: image)
-        } else {
-            cell.backgroundImageView.image = nil
-        }
-        if let iconImage = value?.imageName,
-            !iconImage.isEmpty {
-            cell.iconImageView.image = UIImage(named: iconImage)
-        } else {
-            cell.iconImageView.image = nil
-        }
-        cell.label.text = value?.title ?? ""
-        cell.backgroundColor = UIColor(red: 237/255.0, green: 73/255.0, blue: 86/255.0, alpha: 1)
+        
         return cell
     }
 

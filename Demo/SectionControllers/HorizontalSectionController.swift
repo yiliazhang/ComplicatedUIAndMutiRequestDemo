@@ -18,7 +18,6 @@ import IGListKit
 final class HorizontalSectionController: ListSectionController, ListAdapterDataSource, Identity {
     var items: [ListDiffable] = []
     var demoItem: DemoItem?
-    
     lazy var adapter: ListAdapter = {
         let adapter = ListAdapter(updater: ListAdapterUpdater(),
                                     viewController: self.viewController)
@@ -44,7 +43,6 @@ final class HorizontalSectionController: ListSectionController, ListAdapterDataS
         adapter.collectionView = cell.collectionView
         return cell
     }
-
 
     // MARK: ListAdapterDataSource
 

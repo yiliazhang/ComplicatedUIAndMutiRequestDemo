@@ -16,6 +16,7 @@ import IGListKit
     dynamic var title: String
     dynamic var viewController: UIViewController
     init(backgroundImageURL: String = "", backgroundImageName: String = "", imageName: String = "", title: String = "", viewController: UIViewController = DetailViewController()) {
+
         self.backgroundImageURL = backgroundImageURL
         self.backgroundImageName = backgroundImageName
         self.imageName = imageName
@@ -26,6 +27,7 @@ import IGListKit
 }
 
 extension GridItem: ListDiffable {
+
     func diffIdentifier() -> NSObjectProtocol {
         return self
     }
@@ -34,4 +36,3 @@ extension GridItem: ListDiffable {
         return self === object ? true : self.isEqual(object)
     }
 }
-

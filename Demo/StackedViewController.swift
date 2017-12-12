@@ -14,6 +14,7 @@
 
 import UIKit
 import IGListKit
+import Moya
 
 final class StackedViewController: UIViewController {
 
@@ -22,7 +23,6 @@ final class StackedViewController: UIViewController {
     }()
 
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-
     lazy var listManager: ListManager = {
         return ListManager("home", delegate: self)
     }()
@@ -64,6 +64,10 @@ final class StackedViewController: UIViewController {
 }
 
 extension StackedViewController: UpdateData {
+    func reloadItem(_ atSections: IndexSet) {
+        self.collectionView.reloadSections(atSections)
+    }
+
     func update() {
         self.adapter.performUpdates(animated: true, completion: nil)
     }

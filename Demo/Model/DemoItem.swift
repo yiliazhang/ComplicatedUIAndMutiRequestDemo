@@ -8,6 +8,7 @@
 
 import UIKit
 import IGListKit
+import Moya
 
 // MARK: - Demo Data
 
@@ -99,5 +100,3 @@ extension DemoItem: ListDiffable {
         return true
     }
 }
-
-

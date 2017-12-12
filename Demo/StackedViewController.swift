@@ -23,15 +23,38 @@ final class StackedViewController: UIViewController {
 
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
+    lazy var listManager: ListManager = {
+        return ListManager("home", delegate: self)
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = UIColor(white: 0.95, alpha: 1)
         view.addSubview(collectionView)
         adapter.collectionView = collectionView
-        adapter.dataSource = DataSourceManager.shared
-        adapter.scrollViewDelegate = DataSourceManager.shared
-        DataSourceManager.shared.delegate = self
-        DataSourceManager.shared.startRequests()
+        adapter.dataSource = listManager
+
+        configData()
+    }
+
+    func configData() {
+        listManager.removeAll()
+        let itemOne = DemoItem("GridOne", sectionControllerName: GridSectionController.description(), request: .gridItem)
+        let emBeddedOne = DemoItem("EmBeddedOne", sectionControllerName: HorizontalSectionController.description(), request: .text)
+        let labelOne = DemoItem("LabeldOne", sectionControllerName: LabelSectionController.description(), request: .centerText)
+        let imageOne = DemoItem("imageOne", sectionControllerName: ImageSectionController.description(), request: .image)
+
+        let itemTwo = DemoItem("GridTwo", sectionControllerName: GridSectionController.description(), request: .gridItem)
+        let emBeddedTwo = DemoItem("EmBeddedTwo", sectionControllerName: HorizontalSectionController.description(), request: .text)
+        let labelTwo = DemoItem("LabeldTwo", sectionControllerName: LabelSectionController.description(), request: .centerText)
+        let imageTwo = DemoItem("imageTwo", sectionControllerName: ImageSectionController.description(), request: .image)
+
+        let itemThree = DemoItem("GridOne", sectionControllerName: GridSectionController.description(), request: .gridItem)
+        let emBeddedThree = DemoItem("EmBeddedThree", sectionControllerName: HorizontalSectionController.description(), request: .text)
+        let labelThree = DemoItem("LabeldThree", sectionControllerName: LabelSectionController.description(), request: .centerText)
+        let imageThree = DemoItem("imageThree", sectionControllerName: ImageSectionController.description(), request: .image)
+
+        listManager.register([itemOne, emBeddedOne, imageOne, labelOne, itemTwo, emBeddedTwo, labelTwo, imageOne, itemThree, emBeddedThree, itemOne, labelThree, imageOne])
     }
 
     override func viewDidLayoutSubviews() {

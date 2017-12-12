@@ -16,7 +16,7 @@ import UIKit
 
 final class ImageCell: UICollectionViewCell {
 
-    fileprivate let imageView: UIImageView = {
+    let imageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
@@ -49,11 +49,11 @@ final class ImageCell: UICollectionViewCell {
 
     func setImage(image: UIImage?) {
         imageView.image = image
-        if image != nil {
-            activityView.stopAnimating()
-        } else {
-            activityView.startAnimating()
-        }
+//        if image != nil {
+//            activityView.stopAnimating()
+//        } else {
+//            activityView.startAnimating()
+//        }
     }
 
 }

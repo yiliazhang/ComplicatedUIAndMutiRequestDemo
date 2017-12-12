@@ -15,10 +15,19 @@
 import UIKit
 import IGListKit
 
-final class LabelSectionController: ListSectionController {
+final class LabelSectionController: ListSectionController, Identity {
+    var items: [ListDiffable] = []
+    var demoItem: DemoItem?
+    
+    override func didUpdate(to object: Any) {
+        demoItem = object as? DemoItem
+        items = demoItem?.items ?? []
+    }
 
-    private var object: String?
-
+    override func numberOfItems() -> Int {
+        return items.count
+    }
+    
     override func sizeForItem(at index: Int) -> CGSize {
         return CGSize(width: collectionContext!.containerSize.width, height: 55)
     }
@@ -27,16 +36,10 @@ final class LabelSectionController: ListSectionController {
         guard let cell = collectionContext?.dequeueReusableCell(of: LabelCell.self, for: self, at: index) as? LabelCell else {
             fatalError()
         }
-        cell.text = object
+        cell.text = (items[index] as? String) ?? ""
         return cell
     }
 
-    override func didUpdate(to object: Any) {
-        self.object = String(describing: object)
-    }
-}
-extension LabelSectionController: UpdateData {
-    func update() {
-        //TODO: - 待实现
-    }
+    
+
 }

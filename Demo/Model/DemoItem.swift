@@ -9,20 +9,82 @@
 import UIKit
 import IGListKit
 
-final class DemoItem: NSObject {
-    private var _sectionControllerNames: [String : [ListDiffable]] = [:]
+// MARK: - Demo Data
 
-    var sectionControllerNames: [String : [ListDiffable]] {
-        return _sectionControllerNames
-    }
+func demoGridItems() -> [ListDiffable] {
+    return [GridItem(imageName: "icon_zsk", title: "\(arc4random()%999 + arc4random()%9999)"),
+            GridItem(imageName: "icon_wghyw", title: "\(arc4random()%999 + arc4random()%9999)"),
+            GridItem(imageName: "icon_daka", title: "\(arc4random()%999 + arc4random()%9999)"),
+            GridItem(imageName: "icon_fjgl", title: "\(arc4random()%999 + arc4random()%9999)")] as [ListDiffable]
+}
 
-    subscript(sectionControllerName: String) -> [ListDiffable] {
-        get {
-            let items = self._sectionControllerNames[sectionControllerName] ?? []
-            return items
+func demoStrings() -> [ListDiffable] {
+    var index = arc4random()%10
+    var tmpItems: [String] = []
+    while (index > 0) {
+        index = index - 1
+        let value = "\(arc4random()%999 + arc4random()%9999)"
+        if !tmpItems.contains(value) {
+            tmpItems.append(value)
         }
-        set {
-            _sectionControllerNames[sectionControllerName] = newValue
+    }
+    return tmpItems as [ListDiffable]
+}
+
+func demoImageURLs() -> [ListDiffable] {
+    var tmpItems: [String] = []
+    var index = arc4random()%10
+    while index > 0 {
+        index = index - 1
+        let width = Int(arc4random() % 300) + 20
+        let height = Int(arc4random() % 100) + 200
+        tmpItems.append("https://unsplash.it/" + width.description + "/" + height.description)
+    }
+    return tmpItems as [ListDiffable]
+}
+
+// MARK: - DemoItem
+
+final class DemoItem: NSObject {
+    var completion: ((DemoItem) -> Void) = { _ in }
+    var items: [ListDiffable] = []
+    var listManagerIdentifier: String = ""
+    var identifier: String = ""
+    var request: Home = .none
+    var sectionControllerName: String = ListSectionController.description()
+    weak var delegate: UpdateData?
+    init(_ identifier: String, sectionControllerName: String, request: Home = .none,completion: @escaping ((DemoItem) -> Void) = { _ in }) {
+        super.init()
+        self.identifier = identifier
+        self.sectionControllerName = sectionControllerName
+        self.completion = completion
+        self.request = request
+        if self.request == .none {
+            return
+        }
+        homeProvider.request(request) { (result) in
+
+            let myNewItem = DemoItem(self.identifier, sectionControllerName: self.sectionControllerName)
+            //TODO: - 数据转换
+            switch request {
+            case .gridItem:
+                myNewItem.items = demoGridItems()
+            case .text:
+                myNewItem.items = demoStrings()
+            case .centerText:
+                myNewItem.items = demoStrings()
+            case .image:
+                myNewItem.items = demoImageURLs()
+            default:
+                break
+            }
+            if let listManager = ManagerCenter.shared[self.listManagerIdentifier] {
+                if listManager.itemIdentifiers.contains(myNewItem.identifier) {
+                    listManager.register(myNewItem)
+                }
+            }
+
+            self.completion(myNewItem)
         }
     }
 }
@@ -34,51 +96,9 @@ extension DemoItem: ListDiffable {
 
     func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
         if self === object { return true }
-        guard let object = object as? DemoItem else { return false }
-        if object.sectionControllerNames.count == sectionControllerNames.count {
-            if sectionControllerNames.count == 0 {
-                return true
-            }
-            let setOne = Set(sectionControllerNames.keys)
-            let setTwo = Set(object.sectionControllerNames.keys)
-            if setOne.intersection(setTwo).isEmpty {
-                return false
-            }
-            if setOne.union(setOne) != setOne ||
-               setOne.union(setOne) != setTwo {
-                return false
-            }
-            //TODO: - 其他方面的判断
-            return true
-        } else {
-            return false
-        }
+        guard (object as? DemoItem) != nil else { return false }
+        return true
     }
 }
 
-@objcMembers final class GridItem: NSObject {
-    dynamic var backgroundImageURL: String
-    dynamic var backgroundImageName: String
-    dynamic var imageName: String
-    dynamic var title: String
-    dynamic var viewController: UIViewController
 
-    init(backgroundImageURL: String = "", backgroundImageName: String = "", imageName: String = "", title: String = "", viewController: UIViewController = DetailViewController()) {
-        self.backgroundImageURL = backgroundImageURL
-        self.backgroundImageName = backgroundImageName
-        self.imageName = imageName
-        self.title = title
-        self.viewController = viewController
-        self.viewController.title = title
-    }
-}
-
-extension GridItem: ListDiffable {
-    func diffIdentifier() -> NSObjectProtocol {
-        return self
-    }
-
-    func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
-        return self === object ? true : self.isEqual(object)
-    }
-}

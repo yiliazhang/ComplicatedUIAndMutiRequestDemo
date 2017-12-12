@@ -16,7 +16,7 @@ import UIKit
 import IGListKit
 
 final class EmbeddedSectionController: ListSectionController {
-    var text: GridItem?
+    var text: ListDiffable?
     override init() {
         super.init()
         self.inset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
@@ -28,30 +28,14 @@ final class EmbeddedSectionController: ListSectionController {
     }
 
     override func cellForItem(at index: Int) -> UICollectionViewCell {
-        guard let cell = collectionContext?.dequeueReusableCell(of: GridCell.self, for: self, at: index) as? GridCell else {
+        guard let cell = collectionContext?.dequeueReusableCell(of: CenterLabelCell.self, for: self, at: index) as? CenterLabelCell else {
             fatalError()
         }
-        let value = text
-        //加载大图
-        if let image = value?.backgroundImageName,
-            !image.isEmpty {
-            cell.backgroundImageView.image = UIImage(named: image)
-        } else {
-            cell.backgroundImageView.image = nil
-        }
-        if let iconImage = value?.imageName,
-            !iconImage.isEmpty {
-            cell.iconImageView.image = UIImage(named: iconImage)
-        } else {
-            cell.iconImageView.image = nil
-        }
-        cell.label.text = value?.title ?? ""
-        cell.backgroundColor = UIColor(red: 237/255.0, green: 73/255.0, blue: 86/255.0, alpha: 1)
+        cell.text = (text as? String) ?? ""
         return cell
     }
 
     override func didUpdate(to object: Any) {
-        text = (object as? GridItem) ?? GridItem()
+        text = object as? ListDiffable
     }
-
 }

@@ -18,7 +18,12 @@ final class CenterLabelCell: UICollectionViewCell {
 
     lazy private var label: UILabel = {
         let view = UILabel()
-        view.backgroundColor = .clear
+
+        let red = CGFloat(arc4random()%256)/255.0
+        let green = CGFloat(arc4random()%256)/255.0
+        let blue = CGFloat(arc4random()%256)/255.0
+
+        view.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
         view.textAlignment = .center
         view.textColor = .white
         view.font = .boldSystemFont(ofSize: 18)

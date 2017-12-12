@@ -15,16 +15,21 @@
 import UIKit
 import IGListKit
 
-final class HorizontalSectionController: ListSectionController, ListAdapterDataSource {
-    var items: [GridItem] = []
-    var object: DemoItem?
-
+final class HorizontalSectionController: ListSectionController, ListAdapterDataSource, Identity {
+    var items: [ListDiffable] = []
+    var demoItem: DemoItem?
+    
     lazy var adapter: ListAdapter = {
         let adapter = ListAdapter(updater: ListAdapterUpdater(),
                                     viewController: self.viewController)
         adapter.dataSource = self
         return adapter
     }()
+    
+    override func didUpdate(to object: Any) {
+        demoItem = object as? DemoItem
+        items = demoItem?.items ?? []
+    }
 
     override func sizeForItem(at index: Int) -> CGSize {
         return CGSize(width: collectionContext!.containerSize.width, height: 100)
@@ -40,33 +45,19 @@ final class HorizontalSectionController: ListSectionController, ListAdapterDataS
         return cell
     }
 
-    override func didUpdate(to object: Any) {
-        self.object = object as? DemoItem
-        let controllerString = HorizontalSectionController.description()
-        items.removeAll()
-        if let myObject = self.object,
-            let tmpItems = myObject[controllerString] as? [GridItem] {
-            items.append(contentsOf: tmpItems)
-        }
-    }
 
     // MARK: ListAdapterDataSource
 
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        return items as [ListDiffable]
+        return items
     }
 
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
-        return EmbeddedSectionController()
+        let controller = EmbeddedSectionController()
+        return controller
     }
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
         return nil
-    }
-
-}
-extension HorizontalSectionController: UpdateData {
-    func update() {
-        //TODO: - 待实现
     }
 }

@@ -15,23 +15,20 @@
 import UIKit
 import IGListKit
 import Kingfisher
-final class GridSectionController: ListSectionController {
-    private var items: [GridItem] = []
-    var object: DemoItem?
+final class GridSectionController: ListSectionController, Identity {
+    var items: [ListDiffable] = []
+    var demoItem: DemoItem?
+    
     override init() {
         super.init()
         self.minimumInteritemSpacing = 1
         self.minimumLineSpacing = 1
+//        self.startRequest()
     }
 
     override func didUpdate(to object: Any) {
-        self.object = object as? DemoItem
-        let controllerString = GridSectionController.description()
-        items.removeAll()
-        if let myObject = self.object,
-            let tmpItems = myObject[controllerString] as? [GridItem] {
-                items.append(contentsOf: tmpItems)
-        }
+        demoItem = object as? DemoItem
+        items = demoItem?.items ?? []
     }
 
     override func numberOfItems() -> Int {
@@ -45,8 +42,12 @@ final class GridSectionController: ListSectionController {
     }
 
     override func cellForItem(at index: Int) -> UICollectionViewCell {
+        guard let object = self.demoItem,
+            let value = object.items[index] as? GridItem else {
+                assert(false, "传入的 model 类型不对？")
+            return UICollectionViewCell()
+        }
         let cell = collectionContext!.dequeueReusableCell(of: GridCell.self, for: self, at: index) as! GridCell
-        let value = items[index]
         //加载大图
         if !value.backgroundImageURL.isEmpty,
             let url = URL(string: value.backgroundImageURL) {
@@ -64,9 +65,11 @@ final class GridSectionController: ListSectionController {
     }
 
     override func didSelectItem(at index: Int) {
-        let controller = items[index].viewController
-        controller.title = items[index].title
-        controller.hidesBottomBarWhenPushed = true
-        viewController?.navigationController?.pushViewController(controller, animated: true)
+        if let item = items[index] as? GridItem {
+            let controller = item.viewController
+            controller.title = item.title
+            controller.hidesBottomBarWhenPushed = true
+            viewController?.navigationController?.pushViewController(controller, animated: true)
+        }
     }
 }

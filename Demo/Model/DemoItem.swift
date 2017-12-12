@@ -36,15 +36,14 @@ func demoImageURLs() -> [ListDiffable] {
     var index = arc4random()%10
     while index > 0 {
         index = index - 1
-        let width = Int(arc4random() % 300) + 20
-        let height = Int(arc4random() % 100) + 200
+        let width = UIScreen.main.bounds.size.width
+        let height = Int(arc4random() % 100) + 100
         tmpItems.append("https://unsplash.it/" + width.description + "/" + height.description)
     }
     return tmpItems as [ListDiffable]
 }
 
 // MARK: - DemoItem
-
 final class DemoItem: NSObject {
     var completion: ((DemoItem) -> Void) = { _ in }
     var items: [ListDiffable] = []

@@ -54,7 +54,7 @@ final class StackedViewController: UIViewController {
         let labelThree = DemoItem("LabeldThree", sectionControllerName: LabelSectionController.description(), request: .centerText)
         let imageThree = DemoItem("imageThree", sectionControllerName: ImageSectionController.description(), request: .image)
 
-        listManager.register([itemOne, emBeddedOne, imageOne, labelOne, itemTwo, emBeddedTwo, labelTwo, imageOne, itemThree, emBeddedThree, itemOne, labelThree, imageOne])
+        listManager.register([itemOne, emBeddedOne, imageOne, labelOne, itemTwo, emBeddedTwo, labelTwo, imageTwo, itemThree, emBeddedThree, itemOne, labelThree, imageThree])
     }
 
     override func viewDidLayoutSubviews() {

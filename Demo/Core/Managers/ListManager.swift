@@ -10,9 +10,8 @@ import UIKit
 import IGListKit
 
 @objc protocol UpdateData {
-
     ///  让 delegate 实现刷新方法
-    func update()
+    func dataUpdated()
 }
 
 class ListManager: NSObject {
@@ -76,7 +75,7 @@ class ListManager: NSObject {
         let identifier = item.identifier
         item.listManagerIdentifier = self.identifier
         _itemKeyValues[identifier] = item
-        delegate?.update()
+        delegate?.dataUpdated()
     }
 
     /// 注册数据组
@@ -88,19 +87,19 @@ class ListManager: NSObject {
             item.listManagerIdentifier = self.identifier
             _itemKeyValues[item.identifier] = item
         }
-        delegate?.update()
+        delegate?.dataUpdated()
     }
 
     ///移除所有
     func removeAll() {
         _itemKeyValues.removeAll()
-        delegate?.update()
+        delegate?.dataUpdated()
     }
 
     ///移除 数据
     func remove(_ item: CollectionManager) {
         _itemKeyValues.removeValue(forKey: item.identifier)
-        delegate?.update()
+        delegate?.dataUpdated()
     }
     ///移除 数据组
     func remove(_ items: [CollectionManager]) {
@@ -110,7 +109,7 @@ class ListManager: NSObject {
         items.forEach { (item) in
             _itemKeyValues.removeValue(forKey: item.identifier)
         }
-        delegate?.update()
+        delegate?.dataUpdated()
     }
 }
 

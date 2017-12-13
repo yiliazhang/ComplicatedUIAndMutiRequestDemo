@@ -7,7 +7,7 @@
 //
 
 import Foundation
-let semaphore = DispatchSemaphore(value: 6)
+//let semaphore = DispatchSemaphore(value: 6)
 class ManagerCenter {
     static let shared = ManagerCenter()
 
@@ -47,6 +47,5 @@ class ManagerCenter {
     }
 
     private init() {
-
     }
 }

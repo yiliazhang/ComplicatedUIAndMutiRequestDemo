@@ -13,7 +13,6 @@ import Moya
 // MARK: - CollectionManager
 
 final class CollectionManager {
-
     /// 配置完成后需要做的事，目前没用到
     var completion: ((CollectionManager) -> Void) = { _ in }
 

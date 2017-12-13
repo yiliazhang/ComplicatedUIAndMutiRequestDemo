@@ -15,7 +15,7 @@
 import UIKit
 import IGListKit
 import Moya
-open class YILListViewController: UIViewController {
+open class RootListViewController: UIViewController {
     /// IGListKit 需要用到
     lazy var adapter: ListAdapter = {
         return ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 1)
@@ -47,8 +47,8 @@ open class YILListViewController: UIViewController {
     }
 }
 
-extension YILListViewController: UpdateData {
-    func update() {
+extension RootListViewController: UpdateData {
+    func dataUpdated() {
         self.adapter.performUpdates(animated: true, completion: nil)
     }
 }

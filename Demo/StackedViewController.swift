@@ -17,12 +17,15 @@ import IGListKit
 import Moya
 
 final class StackedViewController: UIViewController {
-
+    /// IGListKit 需要用到
     lazy var adapter: ListAdapter = {
         return ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 1)
     }()
 
+    /// 展示布局
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+
+    /// 数据配置工具
     lazy var listManager: ListManager = {
         return ListManager("home", delegate: self)
     }()
@@ -34,6 +37,7 @@ final class StackedViewController: UIViewController {
         adapter.collectionView = collectionView
         adapter.dataSource = listManager
 
+        ///配置数据
         configData()
     }
 

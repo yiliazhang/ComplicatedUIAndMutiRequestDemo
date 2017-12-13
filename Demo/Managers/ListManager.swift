@@ -9,14 +9,9 @@
 import UIKit
 import IGListKit
 
-let semaphore = DispatchSemaphore(value: 6)
-@objc protocol Identity {
-    var demoItem: ListDiffable? { get set }
-}
-
-typealias IdentityListSectionController = ListSectionController & Identity
-
 @objc protocol UpdateData {
+
+    ///  让 delegate 实现刷新方法
     func update()
 }
 
@@ -57,10 +52,13 @@ class ListManager: NSObject {
         }
     }
 
+    /// 包含的 key 和对应的 CollectionManager
     var itemKeyValues: [String: CollectionManager] {
         return _itemKeyValues
     }
 
+
+    /// - Parameter identifier: 唯一标识码
     init(_ identifier: String) {
         super.init()
         ManagerCenter.shared.register(self)
@@ -72,6 +70,8 @@ class ListManager: NSObject {
         self.delegate = delegate
     }
 
+
+    /// 注册数据
     func register(_ item: CollectionManager) {
         let identifier = item.identifier
         item.listManagerIdentifier = self.identifier
@@ -79,6 +79,7 @@ class ListManager: NSObject {
         delegate?.update()
     }
 
+    /// 注册数据组
     func register(_ items: [CollectionManager]) {
         if items.count == 0 {
             return
@@ -90,16 +91,18 @@ class ListManager: NSObject {
         delegate?.update()
     }
 
+    ///移除所有
     func removeAll() {
         _itemKeyValues.removeAll()
         delegate?.update()
     }
 
+    ///移除 数据
     func remove(_ item: CollectionManager) {
         _itemKeyValues.removeValue(forKey: item.identifier)
         delegate?.update()
     }
-
+    ///移除 数据组
     func remove(_ items: [CollectionManager]) {
         if items.count == 0 {
             return

@@ -11,7 +11,7 @@
 
 
 **说明：**
-本项目界面布局主要是借助[ IGListKit](https://github.com/Instagram/IGListKit) 完成。项目为 `MVC` 模式。用到的第三方开源框架也比较常见。没有用到 `Moya` 或者 `RxSwift`(主要是对后者不熟，没时间思考是否合适)，也没有内嵌 `Html5`。
+本项目界面布局主要是借助[ IGListKit](https://github.com/Instagram/IGListKit) ，网络请求选用的`Moya` 。
 
 
 
@@ -30,11 +30,44 @@
 ## 项目框架内容：
 
 * `StackedViewController` ：展示所有内容的 ViewController。
-  * 实现了 `ListAdapterDataSource`(功能参考`IGListKit`)；
-  * 实现`UIScrollViewDelegat`(用于下拉刷新，上拉加载更多)；
-  * 实现`UpdateData`刷新数据,是 `DataSourceManager.shared.delegate`
+  ``` 
+  /// IGListKit 需要用到
+  lazy var adapter: ListAdapter = {
+        return ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 1)
+    }()
+    
+  /// 展示布局
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    
+    /// 页面数据管理者
+    lazy var listManager: ListManager = {
+        return ListManager("home", delegate: self)
+    }()
 
-* `DataSourceManager`：处理StackedViewController页中的所有数据，所有的模块数据配置都是通过此类，不需要修改 `StackedViewController`。
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView.backgroundColor = UIColor(white: 0.95, alpha: 1)
+        view.addSubview(collectionView)
+        adapter.collectionView = collectionView
+        adapter.dataSource = listManager
+  	  ///配置数据
+        configData()
+    }
+
+    ///
+    func configData() {
+        listManager.removeAll()
+        let gridOne = CollectionManager("gridOne", request: Home.gridItem)
+        let textOne = CollectionManager("textOne", request: Home.text)
+        let imageOne = CollectionManager("imageOne", request: .image)
+        let centerTextOne = CollectionManager("centerTextOne", request: .centerText)
+
+        listManager.register([gridOne, textOne, centerTextOne, imageOne])
+    }
+    
+  ```
+
+* `CollectionManager`
   * `private var _items: [DemoItem] = []`私有变量
   * ` open var items: [DemoItem]`只读属性返回`_items`
   * `weak var delegate: UpdateData?`代理

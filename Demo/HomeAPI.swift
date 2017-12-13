@@ -8,7 +8,7 @@
 
 import Foundation
 import Moya
-
+import IGListKit
 // MARK: - Provider setup
 
 private func JSONResponseDataFormatter(_ data: Data) -> Data {

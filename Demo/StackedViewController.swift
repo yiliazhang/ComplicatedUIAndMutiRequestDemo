@@ -39,22 +39,26 @@ final class StackedViewController: UIViewController {
 
     func configData() {
         listManager.removeAll()
-        let itemOne = DemoItem("GridOne", sectionControllerName: GridSectionController.description(), request: .gridItem)
-        let emBeddedOne = DemoItem("EmBeddedOne", sectionControllerName: HorizontalSectionController.description(), request: .text)
-        let labelOne = DemoItem("LabeldOne", sectionControllerName: LabelSectionController.description(), request: .centerText)
-        let imageOne = DemoItem("imageOne", sectionControllerName: ImageSectionController.description(), request: .image)
+        let itemOne = CollectionManager("hhh", request: Home.text)
 
-        let itemTwo = DemoItem("GridTwo", sectionControllerName: GridSectionController.description(), request: .gridItem)
-        let emBeddedTwo = DemoItem("EmBeddedTwo", sectionControllerName: HorizontalSectionController.description(), request: .text)
-        let labelTwo = DemoItem("LabeldTwo", sectionControllerName: LabelSectionController.description(), request: .centerText)
-        let imageTwo = DemoItem("imageTwo", sectionControllerName: ImageSectionController.description(), request: .image)
 
-        let itemThree = DemoItem("GridOne", sectionControllerName: GridSectionController.description(), request: .gridItem)
-        let emBeddedThree = DemoItem("EmBeddedThree", sectionControllerName: HorizontalSectionController.description(), request: .text)
-        let labelThree = DemoItem("LabeldThree", sectionControllerName: LabelSectionController.description(), request: .centerText)
-        let imageThree = DemoItem("imageThree", sectionControllerName: ImageSectionController.description(), request: .image)
 
-        listManager.register([itemOne, emBeddedOne, imageOne, labelOne, itemTwo, emBeddedTwo, labelTwo, imageTwo, itemThree, emBeddedThree, itemOne, labelThree, imageThree])
+//        let emBeddedOne = CollectionManager("EmBeddedOne", request: .text)
+//        let labelOne = CollectionManager("LabeldOne", request: .centerText)
+//        let imageOne = CollectionManager("imageOne", request: .image)
+//
+//        let itemTwo = CollectionManager("GridTwo", request: .gridItem)
+//        let emBeddedTwo = CollectionManager("EmBeddedTwo", request: .text)
+//        let labelTwo = CollectionManager("LabeldTwo", request: .centerText)
+//        let imageTwo = CollectionManager("imageTwo", sectionControllerName: ImageSectionController.description(), request: .image)
+//
+//        let itemThree = CollectionManager("GridOne", sectionControllerName: GridSectionController.description(), request: .gridItem)
+//        let emBeddedThree = CollectionManager("EmBeddedThree", sectionControllerName: HorizontalSectionController.description(), request: .text)
+//        let labelThree = CollectionManager("LabeldThree", sectionControllerName: LabelSectionController.description(), request: .centerText)
+//        let imageThree = CollectionManager("imageThree", sectionControllerName: ImageSectionController.description(), request: .image)
+
+//        listManager.register([itemOne, emBeddedOne, imageOne, labelOne, itemTwo, emBeddedTwo, labelTwo, imageTwo, itemThree, emBeddedThree, itemOne, labelThree, imageThree])
+        listManager.register(itemOne)
     }
 
     override func viewDidLayoutSubviews() {

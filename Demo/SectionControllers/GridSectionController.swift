@@ -17,7 +17,6 @@ import IGListKit
 import Kingfisher
 final class GridSectionController: ListSectionController, Identity {
     var items: [ListDiffable] = []
-    var demoItem: DemoItem?
     override init() {
         super.init()
         self.minimumInteritemSpacing = 1

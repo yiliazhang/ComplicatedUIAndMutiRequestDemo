@@ -18,7 +18,6 @@ import IGListKit
 final class LabelSectionController: ListSectionController, Identity {
     var items: [ListDiffable] = []
     var demoItem: DemoItem?
-    
     override func didUpdate(to object: Any) {
         demoItem = object as? DemoItem
         items = demoItem?.items ?? []
@@ -33,13 +32,11 @@ final class LabelSectionController: ListSectionController, Identity {
     }
 
     override func cellForItem(at index: Int) -> UICollectionViewCell {
+
         guard let cell = collectionContext?.dequeueReusableCell(of: LabelCell.self, for: self, at: index) as? LabelCell else {
             fatalError()
         }
         cell.text = (items[index] as? String) ?? ""
         return cell
     }
-
-    
-
 }

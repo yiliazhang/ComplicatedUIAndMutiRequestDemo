@@ -179,9 +179,12 @@ final class CollectionManager {
   * `HorizontalSectionController`
   * `GridSectionController`
 
-* `YILUtilKit`：其他。
+* `YILUtilKit` ：其他。
 
 ## 请求处理 `Moya`
+	* 项目中用信号量控制多并发请求
+	* 高效加载大图和网络图片`spaceship.jpg`
+	* 项目中随机 sleep (arc4random()%8)模仿不同线程耗时，返回刷新显示时顺序仍然没有变。
 
 ## 鸣谢！
 

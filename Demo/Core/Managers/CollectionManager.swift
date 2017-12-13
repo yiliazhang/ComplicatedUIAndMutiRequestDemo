@@ -19,10 +19,8 @@ final class CollectionManager {
     /// 包含的 元素
     var items: [ListDiffable] = []
 
-
     /// 我的ListManager 的唯一标识符
     var listManagerIdentifier: String = ""
-
 
     /// 我的唯一标识符
     var identifier: String = ""
@@ -53,6 +51,12 @@ final class CollectionManager {
         /// startRequest 设置为 false,防止重复循环请求，陷入死循环
         let myNewItem = CollectionManager(self.identifier,request: self.request, startRequest: false, completion: self.completion)
         homeProvider.request(request) { (result) in
+
+            DispatchQueue.global().async {
+                semaphore.wait()
+                sleep(arc4random()%8)
+                semaphore.signal()
+                DispatchQueue.main.sync {
             var tmpItems: [ListDiffable] = []
             //TODO: - 数据转换
             switch request {
@@ -73,6 +77,8 @@ final class CollectionManager {
                 //重新注册，替换原来的对应元素
                 listManager.register(myNewItem)
                 self.completion(myNewItem)
+            }
+                }
             }
         }
     }

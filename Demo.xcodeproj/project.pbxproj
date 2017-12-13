@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180FEFAE1FE0D4430061F9A5 /* GridSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180FEFAD1FE0D4430061F9A5 /* GridSectionController.swift */; };
+		180FEFB21FE0E0320061F9A5 /* HorizontalSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180FEFB01FE0E0320061F9A5 /* HorizontalSectionController.swift */; };
 		1812B1021FDA3A2F00995282 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812B1011FDA3A2F00995282 /* AppDelegate.swift */; };
 		1812B1071FDA3A2F00995282 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1812B1051FDA3A2F00995282 /* Main.storyboard */; };
 		1812B1091FDA3A2F00995282 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1812B1081FDA3A2F00995282 /* Assets.xcassets */; };
@@ -51,6 +53,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		180FEFAD1FE0D4430061F9A5 /* GridSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridSectionController.swift; sourceTree = "<group>"; };
+		180FEFB01FE0E0320061F9A5 /* HorizontalSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalSectionController.swift; sourceTree = "<group>"; };
 		1812B0FE1FDA3A2F00995282 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1812B1011FDA3A2F00995282 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1812B1061FDA3A2F00995282 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -211,6 +215,8 @@
 		1812B15B1FDA614100995282 /* SectionControllers */ = {
 			isa = PBXGroup;
 			children = (
+				180FEFB01FE0E0320061F9A5 /* HorizontalSectionController.swift */,
+				180FEFAD1FE0D4430061F9A5 /* GridSectionController.swift */,
 				185E77FA1FDFE220000E0DFB /* RowSectionController.swift */,
 			);
 			path = SectionControllers;
@@ -422,6 +428,7 @@
 				1812B1521FDA5E5500995282 /* LabelCell.swift in Sources */,
 				1812B12E1FDA3B1A00995282 /* YILSettings.swift in Sources */,
 				185E78011FE00620000E0DFB /* CollectionItem.swift in Sources */,
+				180FEFAE1FE0D4430061F9A5 /* GridSectionController.swift in Sources */,
 				1812B1621FDA634600995282 /* ImageCell.swift in Sources */,
 				1833325F1FDBB9420041F642 /* StackedViewController.swift in Sources */,
 				1812B14E1FDA5D0A00995282 /* UIViewController+Appearance.swift in Sources */,
@@ -435,6 +442,7 @@
 				1812B13E1FDA3B1A00995282 /* UIImage+Color.swift in Sources */,
 				1812B1361FDA3B1A00995282 /* HostManager.swift in Sources */,
 				1812B1021FDA3A2F00995282 /* AppDelegate.swift in Sources */,
+				180FEFB21FE0E0320061F9A5 /* HorizontalSectionController.swift in Sources */,
 				18FF20411FDD26950067613D /* SpinnerCell.swift in Sources */,
 				18AEEFB11FDFAED6008A6E87 /* GridItem.swift in Sources */,
 				1812B13D1FDA3B1A00995282 /* UIViewController+Animation.swift in Sources */,

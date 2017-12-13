@@ -15,18 +15,22 @@
 import UIKit
 import IGListKit
 import Kingfisher
-final class GridSectionController: ListSectionController, Identity {
+final class GridSectionController: ListSectionController {
     var items: [ListDiffable] = []
+    var collectionItem: CollectionItem?
+    var itemSizeBlock: ((ListDiffable) -> CGSize)?
+    var didSelectBlock: ((ListDiffable) -> Void)?
+    var didDeselectBlock: ((ListDiffable) -> Void)?
+    var cellBlock: ((ListSectionController, ListDiffable) -> UICollectionViewCell)?
+
     override init() {
         super.init()
-        self.minimumInteritemSpacing = 1
-        self.minimumLineSpacing = 1
-//        self.startRequest()
     }
 
     override func didUpdate(to object: Any) {
-        demoItem = object as? DemoItem
-        items = demoItem?.items ?? []
+        items.removeAll()
+        collectionItem = object as? CollectionItem
+        items = collectionItem?.items ?? []
     }
 
     override func numberOfItems() -> Int {
@@ -34,40 +38,29 @@ final class GridSectionController: ListSectionController, Identity {
     }
 
     override func sizeForItem(at index: Int) -> CGSize {
-        let width = collectionContext?.containerSize.width ?? 0
-        let itemSize = floor(width / 4)
-        return CGSize(width: itemSize, height: itemSize)
+        if let block = self.itemSizeBlock {
+            return block(items[index])
+        }
+        self.minimumInteritemSpacing = 1
+        self.minimumLineSpacing = 1
+        return defaultItemSize
     }
 
     override func cellForItem(at index: Int) -> UICollectionViewCell {
-        guard let object = self.demoItem,
-            let value = object.items[index] as? GridItem else {
-                assert(false, "传入的 model 类型不对？")
-            return UICollectionViewCell()
+        if let block = self.cellBlock {
+            return block(self, self.items[index])
         }
-        let cell = collectionContext!.dequeueReusableCell(of: GridCell.self, for: self, at: index) as! GridCell
-        //加载大图
-        if !value.backgroundImageURL.isEmpty,
-            let url = URL(string: value.backgroundImageURL) {
-            cell.backgroundImageView.kf.setImage(with: url, placeholder: UIImage(named: "spaceship.jpg"), options: nil, progressBlock: nil, completionHandler: nil)
-        } else {
-            cell.backgroundImageView.image = nil
-        }
-        if value.imageName.isEmpty {
-            cell.iconImageView.image = nil
-        } else {
-            cell.iconImageView.image = UIImage(named: value.imageName)
-        }
-        cell.label.text = value.title
-        return cell
+        return UICollectionViewCell()
     }
 
     override func didSelectItem(at index: Int) {
-        if let item = items[index] as? GridItem {
-            let controller = item.viewController
-            controller.title = item.title
-            controller.hidesBottomBarWhenPushed = true
-            viewController?.navigationController?.pushViewController(controller, animated: true)
+        if let block = self.didSelectBlock {
+            return block(self.items[index])
+        }
+    }
+    override func didDeselectItem(at index: Int) {
+        if let block = self.didDeselectBlock {
+            return block(self.items[index])
         }
     }
 }

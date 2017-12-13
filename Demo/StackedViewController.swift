@@ -39,26 +39,12 @@ final class StackedViewController: UIViewController {
 
     func configData() {
         listManager.removeAll()
-//        let textOne = CollectionManager("textOne", request: Home.text)
+        let gridOne = CollectionManager("gridOne", request: Home.gridItem)
+        let textOne = CollectionManager("textOne", request: Home.text)
         let imageOne = CollectionManager("imageOne", request: .image)
+        let centerTextOne = CollectionManager("centerTextOne", request: .centerText)
 
-
-
-//        let emBeddedOne = CollectionManager("EmBeddedOne", request: .text)
-//        let labelOne = CollectionManager("LabeldOne", request: .centerText)
-//
-//        let itemTwo = CollectionManager("GridTwo", request: .gridItem)
-//        let emBeddedTwo = CollectionManager("EmBeddedTwo", request: .text)
-//        let labelTwo = CollectionManager("LabeldTwo", request: .centerText)
-//        let imageTwo = CollectionManager("imageTwo", sectionControllerName: ImageSectionController.description(), request: .image)
-//
-//        let itemThree = CollectionManager("GridOne", sectionControllerName: GridSectionController.description(), request: .gridItem)
-//        let emBeddedThree = CollectionManager("EmBeddedThree", sectionControllerName: HorizontalSectionController.description(), request: .text)
-//        let labelThree = CollectionManager("LabeldThree", sectionControllerName: LabelSectionController.description(), request: .centerText)
-//        let imageThree = CollectionManager("imageThree", sectionControllerName: ImageSectionController.description(), request: .image)
-
-//        listManager.register([itemOne, emBeddedOne, imageOne, labelOne, itemTwo, emBeddedTwo, labelTwo, imageTwo, itemThree, emBeddedThree, itemOne, labelThree, imageThree])
-        listManager.register(imageOne)
+        listManager.register([gridOne, textOne, centerTextOne, imageOne])
     }
 
     override func viewDidLayoutSubviews() {

@@ -43,7 +43,7 @@ final class CollectionManager {
             case .text:
                 tmpItems = self.demoStrings() as [ListDiffable]
             case .centerText:
-                tmpItems = self.demoStrings() as [ListDiffable]
+                tmpItems = self.demoCenterStrings()
             case .image:
                 tmpItems = self.demoImageURLs() as [ListDiffable]
             default:
@@ -71,8 +71,21 @@ extension CollectionManager {
         return [CollectionItem(items)]
     }
 
+    private func demoCenterStrings() -> [CollectionItem] {
+        var index = arc4random()%10 + 2
+        var tmpItems: [String] = []
+        while (index > 0) {
+            index = index - 1
+            let value = "\(arc4random()%999 + arc4random()%9999)"
+            if !tmpItems.contains(value) {
+                tmpItems.append(value)
+            }
+        }
+        return [CollectionItem(tmpItems as [ListDiffable])]
+    }
+
     private func demoStrings() -> [String] {
-        var index = arc4random()%10
+        var index = arc4random()%5 + 2
         var tmpItems: [String] = []
         while (index > 0) {
             index = index - 1

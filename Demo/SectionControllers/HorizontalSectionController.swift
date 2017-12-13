@@ -15,30 +15,43 @@
 import UIKit
 import IGListKit
 
-final class HorizontalSectionController: ListSectionController, ListAdapterDataSource, Identity {
+final class HorizontalSectionController: ListSectionController, ListAdapterDataSource {
+
     var items: [ListDiffable] = []
     var collectionItem: CollectionItem?
+    var itemSize: CGSize = .zero
+    var didSelectBlock: ((ListDiffable) -> Void)?
+    var didDeselectBlock: ((ListDiffable) -> Void)?
+    var cellBlock: ((ListSectionController, ListDiffable) -> UICollectionViewCell)?
+    private var height: CGFloat = 0
     lazy var adapter: ListAdapter = {
         let adapter = ListAdapter(updater: ListAdapterUpdater(),
                                     viewController: self.viewController)
         adapter.dataSource = self
         return adapter
     }()
-    
-    override func didUpdate(to object: Any) {
-        demoItem = object as? DemoItem
-        items = demoItem?.items ?? []
+
+    init(_ size: CGSize = .zero) {
+        super.init()
+        self.itemSize = size
     }
 
+    override func didUpdate(to object: Any) {
+        items.removeAll()
+        collectionItem = object as? CollectionItem
+        items = collectionItem?.items ?? []
+    }
+
+
     override func sizeForItem(at index: Int) -> CGSize {
-        return CGSize(width: collectionContext!.containerSize.width, height: 100)
+        return CGSize(width: defaultItemWidth, height: itemSize.height)
     }
 
     override func cellForItem(at index: Int) -> UICollectionViewCell {
         guard let cell = collectionContext?.dequeueReusableCell(of: EmbeddedCollectionViewCell.self,
-                                                          for: self,
-                                                          at: index) as? EmbeddedCollectionViewCell else {
-                                                            fatalError()
+                                                                for: self,
+                                                                at: index) as? EmbeddedCollectionViewCell else {
+                                                                    fatalError()
         }
         adapter.collectionView = cell.collectionView
         return cell
@@ -51,7 +64,13 @@ final class HorizontalSectionController: ListSectionController, ListAdapterDataS
     }
 
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
-        let controller = EmbeddedSectionController()
+        let controller = RowSectionController()
+        controller.cellBlock = self.cellBlock
+        controller.didDeselectBlock = self.didDeselectBlock
+        controller.cellBlock = self.cellBlock
+        controller.itemSizeBlock = { _ in
+            return self.itemSize
+        }
         return controller
     }
 

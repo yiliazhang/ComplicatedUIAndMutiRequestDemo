@@ -8,11 +8,15 @@
 
 import Foundation
 import IGListKit
-let defaultItemSize = CGSize(width: UIScreen.main.bounds.size.width, height: 44)
 final class RowSectionController: ListSectionController {
+    
     var itemSizeBlock: ((ListDiffable) -> CGSize)?
+    var didSelectBlock: ((ListDiffable) -> Void)?
+    var didDeselectBlock: ((ListDiffable) -> Void)?
+
     var cellBlock: ((ListSectionController, ListDiffable) -> UICollectionViewCell)?
     var item: ListDiffable?
+    
     override init() {
         super.init()
     }
@@ -46,5 +50,19 @@ final class RowSectionController: ListSectionController {
             return block(self, item)
         }
         return UICollectionViewCell()
+    }
+
+    override func didSelectItem(at index: Int) {
+        if  let item = self.item,
+            let block = self.didSelectBlock {
+            return block(item)
+        }
+    }
+
+    override func didDeselectItem(at index: Int) {
+        if  let item = self.item,
+            let block = self.didDeselectBlock {
+            return block(item)
+        }
     }
 }

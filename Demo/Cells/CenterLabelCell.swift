@@ -13,7 +13,7 @@
  */
 
 import UIKit
-
+import IGListKit
 final class CenterLabelCell: UICollectionViewCell {
 
     lazy private var label: UILabel = {
@@ -45,4 +45,10 @@ final class CenterLabelCell: UICollectionViewCell {
         label.frame = contentView.bounds
     }
 
+}
+extension CenterLabelCell: ListBindable {
+    func bindViewModel(_ viewModel: Any) {
+//        guard let viewModel = viewModel as? String else { return }
+//        label.text = viewModel
+    }
 }

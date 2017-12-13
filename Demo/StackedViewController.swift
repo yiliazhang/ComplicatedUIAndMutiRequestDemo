@@ -39,13 +39,13 @@ final class StackedViewController: UIViewController {
 
     func configData() {
         listManager.removeAll()
-        let itemOne = CollectionManager("hhh", request: Home.text)
+//        let textOne = CollectionManager("textOne", request: Home.text)
+        let imageOne = CollectionManager("imageOne", request: .image)
 
 
 
 //        let emBeddedOne = CollectionManager("EmBeddedOne", request: .text)
 //        let labelOne = CollectionManager("LabeldOne", request: .centerText)
-//        let imageOne = CollectionManager("imageOne", request: .image)
 //
 //        let itemTwo = CollectionManager("GridTwo", request: .gridItem)
 //        let emBeddedTwo = CollectionManager("EmBeddedTwo", request: .text)
@@ -58,7 +58,7 @@ final class StackedViewController: UIViewController {
 //        let imageThree = CollectionManager("imageThree", sectionControllerName: ImageSectionController.description(), request: .image)
 
 //        listManager.register([itemOne, emBeddedOne, imageOne, labelOne, itemTwo, emBeddedTwo, labelTwo, imageTwo, itemThree, emBeddedThree, itemOne, labelThree, imageThree])
-        listManager.register(itemOne)
+        listManager.register(imageOne)
     }
 
     override func viewDidLayoutSubviews() {

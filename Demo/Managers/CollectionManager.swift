@@ -35,19 +35,21 @@ final class CollectionManager {
         }
         let myNewItem = CollectionManager(self.identifier,request: self.request, startRequest: false, completion: self.completion)
         homeProvider.request(request) { (result) in
+            var tmpItems: [ListDiffable] = []
             //TODO: - 数据转换
             switch request {
             case .gridItem:
-                myNewItem.items = self.demoGridItems()
+                tmpItems = self.demoGridItems()
             case .text:
-                myNewItem.items = self.demoStrings() as [ListDiffable]
+                tmpItems = self.demoStrings() as [ListDiffable]
             case .centerText:
-                myNewItem.items = self.demoStrings() as [ListDiffable]
+                tmpItems = self.demoStrings() as [ListDiffable]
             case .image:
-                myNewItem.items = self.demoImageURLs() as [ListDiffable]
+                tmpItems = self.demoImageURLs() as [ListDiffable]
             default:
                 break
             }
+            myNewItem.items = tmpItems
             if let listManager = ManagerCenter.shared[self.listManagerIdentifier],
                 listManager.itemIdentifiers.contains(self.identifier) {
                 listManager.register(myNewItem)
@@ -84,7 +86,7 @@ extension CollectionManager {
 
     private func demoImageURLs() -> [String] {
         var tmpItems: [String] = []
-        var index = arc4random()%10
+        var index = arc4random()%5 + 1
         while index > 0 {
             index = index - 1
             let width = UIScreen.main.bounds.size.width

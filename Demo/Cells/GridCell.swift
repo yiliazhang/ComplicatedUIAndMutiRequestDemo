@@ -7,8 +7,9 @@
 
 import UIKit
 import SnapKit
+import IGListKit
 import Kingfisher
-class GridCell: UICollectionViewCell, CellProtocol {
+class GridCell: UICollectionViewCell {
     typealias ItemType = GridItem
     
     override init(frame: CGRect) {
@@ -83,5 +84,12 @@ class GridCell: UICollectionViewCell, CellProtocol {
             iconImageView.image = nil
         }
         label.text = model.title
+    }
+}
+
+extension GridCell: ListBindable {
+    func bindViewModel(_ viewModel: Any) {
+//        guard let viewModel = viewModel as? String else { return }
+//        label.text = viewModel
     }
 }

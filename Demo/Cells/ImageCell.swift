@@ -13,7 +13,7 @@
  */
 
 import UIKit
-
+import IGListKit
 final class ImageCell: UICollectionViewCell {
 
     let imageView: UIImageView = {
@@ -26,7 +26,7 @@ final class ImageCell: UICollectionViewCell {
 
     fileprivate let activityView: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-        view.startAnimating()
+//        view.startAnimating()
         return view
     }()
 
@@ -56,4 +56,11 @@ final class ImageCell: UICollectionViewCell {
 //        }
     }
 
+}
+
+extension ImageCell: ListBindable {
+    func bindViewModel(_ viewModel: Any) {
+//        guard let viewModel = viewModel as? String else { return }
+//        label.text = viewModel
+    }
 }

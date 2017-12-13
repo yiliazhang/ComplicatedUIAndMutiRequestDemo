@@ -41,14 +41,12 @@
 		185E77F71FDFE07A000E0DFB /* CollectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185E77F61FDFE07A000E0DFB /* CollectionManager.swift */; };
 		185E77FB1FDFE220000E0DFB /* RowSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185E77FA1FDFE220000E0DFB /* RowSectionController.swift */; };
 		185E78011FE00620000E0DFB /* CollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185E78001FE00620000E0DFB /* CollectionItem.swift */; };
-		185E78041FE01E9A000E0DFB /* Binder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185E78031FE01E9A000E0DFB /* Binder.swift */; };
+		185E78041FE01E9A000E0DFB /* Home+SectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185E78031FE01E9A000E0DFB /* Home+SectionController.swift */; };
 		18AEEFAB1FDF6CBD008A6E87 /* ListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEEFAA1FDF6CBD008A6E87 /* ListManager.swift */; };
 		18AEEFB11FDFAED6008A6E87 /* GridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEEFB01FDFAED6008A6E87 /* GridItem.swift */; };
 		18AEEFB31FDFAFB3008A6E87 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEEFB21FDFAFB3008A6E87 /* HomeAPI.swift */; };
 		18AEEFB51FDFC05A008A6E87 /* ManagerCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEEFB41FDFC05A008A6E87 /* ManagerCenter.swift */; };
 		18FF20411FDD26950067613D /* SpinnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FF20401FDD26940067613D /* SpinnerCell.swift */; };
-		18FF20431FDE2B4A0067613D /* UICollectionViewCell+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FF20421FDE2B4A0067613D /* UICollectionViewCell+Config.swift */; };
-		18FF20721FDE8D8C0067613D /* CellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FF20711FDE8D8C0067613D /* CellProtocol.swift */; };
 		819AD795723BBB638A882A41 /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68069577BC7CE2B1FB9A2CB8 /* Pods_Demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -89,14 +87,12 @@
 		185E77F61FDFE07A000E0DFB /* CollectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionManager.swift; sourceTree = "<group>"; };
 		185E77FA1FDFE220000E0DFB /* RowSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowSectionController.swift; sourceTree = "<group>"; };
 		185E78001FE00620000E0DFB /* CollectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionItem.swift; sourceTree = "<group>"; };
-		185E78031FE01E9A000E0DFB /* Binder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binder.swift; sourceTree = "<group>"; };
+		185E78031FE01E9A000E0DFB /* Home+SectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+SectionController.swift"; sourceTree = "<group>"; };
 		18AEEFAA1FDF6CBD008A6E87 /* ListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListManager.swift; sourceTree = "<group>"; };
 		18AEEFB01FDFAED6008A6E87 /* GridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridItem.swift; sourceTree = "<group>"; };
 		18AEEFB21FDFAFB3008A6E87 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
 		18AEEFB41FDFC05A008A6E87 /* ManagerCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerCenter.swift; sourceTree = "<group>"; };
 		18FF20401FDD26940067613D /* SpinnerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerCell.swift; sourceTree = "<group>"; };
-		18FF20421FDE2B4A0067613D /* UICollectionViewCell+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Config.swift"; sourceTree = "<group>"; };
-		18FF20711FDE8D8C0067613D /* CellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellProtocol.swift; sourceTree = "<group>"; };
 		2F4F75C3CF691BD0DAB605DA /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		68069577BC7CE2B1FB9A2CB8 /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE884096ADFDF8EC97A7F6D4 /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +110,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		180FEFAC1FE0C5450061F9A5 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				18AEEFB21FDFAFB3008A6E87 /* HomeAPI.swift */,
+				185E78031FE01E9A000E0DFB /* Home+SectionController.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		1812B0F51FDA3A2F00995282 = {
 			isa = PBXGroup;
 			children = (
@@ -136,7 +141,7 @@
 		1812B1001FDA3A2F00995282 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				18AEEFB21FDFAFB3008A6E87 /* HomeAPI.swift */,
+				180FEFAC1FE0C5450061F9A5 /* API */,
 				1812B1011FDA3A2F00995282 /* AppDelegate.swift */,
 				1833325E1FDBB9420041F642 /* StackedViewController.swift */,
 				1838C3301FDA70B6002B8284 /* DetailViewController.swift */,
@@ -199,7 +204,6 @@
 				1812B12B1FDA3B1A00995282 /* String+Object.swift */,
 				1812B14D1FDA5D0A00995282 /* UIViewController+Appearance.swift */,
 				183332601FDBF76A0041F642 /* NSObject+String.swift */,
-				18FF20421FDE2B4A0067613D /* UICollectionViewCell+Config.swift */,
 			);
 			path = Swift_Category;
 			sourceTree = "<group>";
@@ -221,7 +225,6 @@
 				1812B1551FDA5F5600995282 /* EmbeddedCollectionViewCell.swift */,
 				1812B1511FDA5E5500995282 /* LabelCell.swift */,
 				1812B14B1FDA5BF100995282 /* GridCell.swift */,
-				18FF20711FDE8D8C0067613D /* CellProtocol.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -229,10 +232,8 @@
 		18481B341FDCDC69007A22DB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				185E77F61FDFE07A000E0DFB /* CollectionManager.swift */,
 				18AEEFB01FDFAED6008A6E87 /* GridItem.swift */,
 				185E78001FE00620000E0DFB /* CollectionItem.swift */,
-				185E78031FE01E9A000E0DFB /* Binder.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -240,6 +241,7 @@
 		185E78021FE0126C000E0DFB /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				185E77F61FDFE07A000E0DFB /* CollectionManager.swift */,
 				18AEEFAA1FDF6CBD008A6E87 /* ListManager.swift */,
 				18AEEFB41FDFC05A008A6E87 /* ManagerCenter.swift */,
 			);
@@ -418,14 +420,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1812B1521FDA5E5500995282 /* LabelCell.swift in Sources */,
-				18FF20721FDE8D8C0067613D /* CellProtocol.swift in Sources */,
 				1812B12E1FDA3B1A00995282 /* YILSettings.swift in Sources */,
 				185E78011FE00620000E0DFB /* CollectionItem.swift in Sources */,
 				1812B1621FDA634600995282 /* ImageCell.swift in Sources */,
 				1833325F1FDBB9420041F642 /* StackedViewController.swift in Sources */,
 				1812B14E1FDA5D0A00995282 /* UIViewController+Appearance.swift in Sources */,
 				183332611FDBF76A0041F642 /* NSObject+String.swift in Sources */,
-				18FF20431FDE2B4A0067613D /* UICollectionViewCell+Config.swift in Sources */,
 				185E77F71FDFE07A000E0DFB /* CollectionManager.swift in Sources */,
 				1812B14C1FDA5BF100995282 /* GridCell.swift in Sources */,
 				1812B1371FDA3B1A00995282 /* UserManager.swift in Sources */,
@@ -454,7 +454,7 @@
 				18AEEFB31FDFAFB3008A6E87 /* HomeAPI.swift in Sources */,
 				1812B1351FDA3B1A00995282 /* Define.swift in Sources */,
 				1812B12D1FDA3B1A00995282 /* ProgressHUD.swift in Sources */,
-				185E78041FE01E9A000E0DFB /* Binder.swift in Sources */,
+				185E78041FE01E9A000E0DFB /* Home+SectionController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

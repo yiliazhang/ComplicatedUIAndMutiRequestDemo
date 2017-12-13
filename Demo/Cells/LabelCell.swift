@@ -84,8 +84,8 @@ final class LabelCell: UICollectionViewCell {
 extension LabelCell: ListBindable {
 
     func bindViewModel(_ viewModel: Any) {
-        guard let viewModel = viewModel as? String else { return }
-        label.text = viewModel
+//        guard let viewModel = viewModel as? String else { return }
+//        label.text = viewModel
     }
 
 }

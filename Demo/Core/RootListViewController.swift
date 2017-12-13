@@ -34,6 +34,7 @@ open class RootListViewController: UIViewController {
         if collectionView == nil {
             collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         }
+        collectionView.backgroundColor = UIColor.white
         if collectionView.superview == nil {
             view.addSubview(collectionView)
         }

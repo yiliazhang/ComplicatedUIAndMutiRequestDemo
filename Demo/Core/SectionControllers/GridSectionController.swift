@@ -18,9 +18,11 @@ import Kingfisher
 final class GridSectionController: ListSectionController {
     var items: [ListDiffable] = []
     var collectionItem: CollectionItem?
-    var itemSizeBlock: ((ListDiffable) -> CGSize)?
-    var didSelectBlock: ((ListDiffable) -> Void)?
-    var didDeselectBlock: ((ListDiffable) -> Void)?
+
+    var itemSizeBlock: ((ListSectionController, ListDiffable) -> CGSize)?
+    var didSelectBlock: ((ListSectionController, ListDiffable) -> Void)?
+    var didDeselectBlock: ((ListSectionController, ListDiffable) -> Void)?
+    
     var cellBlock: ((ListSectionController, ListDiffable) -> UICollectionViewCell)?
 
     override init() {
@@ -39,10 +41,10 @@ final class GridSectionController: ListSectionController {
 
     override func sizeForItem(at index: Int) -> CGSize {
         if let block = self.itemSizeBlock {
-            return block(items[index])
+            return block(self, items[index])
         }
-        self.minimumInteritemSpacing = 1
-        self.minimumLineSpacing = 1
+        self.minimumInteritemSpacing = 0
+        self.minimumLineSpacing = 0
         return defaultItemSize
     }
 
@@ -55,12 +57,12 @@ final class GridSectionController: ListSectionController {
 
     override func didSelectItem(at index: Int) {
         if let block = self.didSelectBlock {
-            return block(self.items[index])
+            return block(self, self.items[index])
         }
     }
     override func didDeselectItem(at index: Int) {
         if let block = self.didDeselectBlock {
-            return block(self.items[index])
+            return block(self, self.items[index])
         }
     }
 }

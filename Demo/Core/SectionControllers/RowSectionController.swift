@@ -10,9 +10,9 @@ import Foundation
 import IGListKit
 final class RowSectionController: ListSectionController {
     
-    var itemSizeBlock: ((ListDiffable) -> CGSize)?
-    var didSelectBlock: ((ListDiffable) -> Void)?
-    var didDeselectBlock: ((ListDiffable) -> Void)?
+    var itemSizeBlock: ((ListSectionController, ListDiffable) -> CGSize)?
+    var didSelectBlock: ((ListSectionController, ListDiffable) -> Void)?
+    var didDeselectBlock: ((ListSectionController, ListDiffable) -> Void)?
 
     var cellBlock: ((ListSectionController, ListDiffable) -> UICollectionViewCell)?
     var item: ListDiffable?
@@ -21,7 +21,7 @@ final class RowSectionController: ListSectionController {
         super.init()
     }
 
-    init (_ itemSizeBlock: @escaping ((ListDiffable) -> CGSize) = { _ in return defaultItemSize }) {
+    init (_ itemSizeBlock: @escaping ((ListSectionController, ListDiffable) -> CGSize) = { _,_  in return defaultItemSize }) {
         super.init()
         self.minimumInteritemSpacing = 1
         self.minimumLineSpacing = 1
@@ -39,7 +39,7 @@ final class RowSectionController: ListSectionController {
     override func sizeForItem(at index: Int) -> CGSize {
         if let item = self.item,
             let block = self.itemSizeBlock {
-            return block(item)
+            return block(self, item)
         }
         return defaultItemSize
     }
@@ -55,14 +55,14 @@ final class RowSectionController: ListSectionController {
     override func didSelectItem(at index: Int) {
         if  let item = self.item,
             let block = self.didSelectBlock {
-            return block(item)
+            return block(self, item)
         }
     }
 
     override func didDeselectItem(at index: Int) {
         if  let item = self.item,
             let block = self.didDeselectBlock {
-            return block(item)
+            return block(self, item)
         }
     }
 }

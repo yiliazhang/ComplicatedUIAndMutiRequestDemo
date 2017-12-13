@@ -33,6 +33,10 @@ final class CollectionManager {
 
     weak var delegate: UpdateData?
 
+    var itemSizeBlock: ((ListDiffable) -> CGSize)?
+    var didSelectBlock: ((ListDiffable) -> Void)?
+    var didDeselectBlock: ((ListDiffable) -> Void)?
+
     init(_ identifier: String, request: Home = .none, startRequest: Bool = true, completion: @escaping (CollectionManager) -> Void = {_ in }) {
         self.identifier = identifier
         self.completion = completion
@@ -54,7 +58,7 @@ final class CollectionManager {
 
             DispatchQueue.global().async {
                 semaphore.wait()
-                sleep(arc4random()%8)
+                sleep(arc4random()%4)
                 semaphore.signal()
                 DispatchQueue.main.sync {
             var tmpItems: [ListDiffable] = []
@@ -92,12 +96,16 @@ extension CollectionManager {
         let items = [GridItem(imageName: "icon_zsk", title: "\(arc4random()%999 + arc4random()%9999)"),
                      GridItem(imageName: "icon_wghyw", title: "\(arc4random()%999 + arc4random()%9999)"),
                      GridItem(imageName: "icon_daka", title: "\(arc4random()%999 + arc4random()%9999)"),
+                     GridItem(imageName: "icon_fjgl", title: "\(arc4random()%999 + arc4random()%9999)"),
+                     GridItem(imageName: "icon_fjgl", title: "\(arc4random()%999 + arc4random()%9999)"),
+                     GridItem(imageName: "icon_fjgl", title: "\(arc4random()%999 + arc4random()%9999)"),
+                     GridItem(imageName: "icon_fjgl", title: "\(arc4random()%999 + arc4random()%9999)"),
                      GridItem(imageName: "icon_fjgl", title: "\(arc4random()%999 + arc4random()%9999)")]
         return [CollectionItem(items)]
     }
 
     private func demoCenterStrings() -> [CollectionItem] {
-        var index = arc4random()%10 + 2
+        var index = arc4random()%8 + 5
         var tmpItems: [String] = []
         while (index > 0) {
             index = index - 1
@@ -110,7 +118,7 @@ extension CollectionManager {
     }
 
     private func demoStrings() -> [String] {
-        var index = arc4random()%5 + 2
+        var index = arc4random()%8 + 3
         var tmpItems: [String] = []
         while (index > 0) {
             index = index - 1
@@ -124,7 +132,7 @@ extension CollectionManager {
 
     private func demoImageURLs() -> [String] {
         var tmpItems: [String] = []
-        var index = arc4random()%5 + 1
+        var index = arc4random()%8 + 2
         while index > 0 {
             index = index - 1
             let width = UIScreen.main.bounds.size.width

@@ -20,8 +20,8 @@ final class HorizontalSectionController: ListSectionController, ListAdapterDataS
     var items: [ListDiffable] = []
     var collectionItem: CollectionItem?
     var itemSize: CGSize = .zero
-    var didSelectBlock: ((ListDiffable) -> Void)?
-    var didDeselectBlock: ((ListDiffable) -> Void)?
+    var didSelectBlock: ((ListSectionController, ListDiffable) -> Void)?
+    var didDeselectBlock: ((ListSectionController, ListDiffable) -> Void)?
     var cellBlock: ((ListSectionController, ListDiffable) -> UICollectionViewCell)?
     private var height: CGFloat = 0
     lazy var adapter: ListAdapter = {
@@ -68,7 +68,7 @@ final class HorizontalSectionController: ListSectionController, ListAdapterDataS
         controller.cellBlock = self.cellBlock
         controller.didDeselectBlock = self.didDeselectBlock
         controller.cellBlock = self.cellBlock
-        controller.itemSizeBlock = { _ in
+        controller.itemSizeBlock = { _, _ in
             return self.itemSize
         }
         return controller

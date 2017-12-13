@@ -57,13 +57,18 @@ extension Home {
             cell.text = item
             return cell
         }
+        sectionController.didSelectBlock = { (sectionController, item) in
+            let controller = DetailViewController()
+            controller.title = (item as? String) ?? ""
+            sectionController.viewController?.navigationController?.pushViewController(controller, animated: true)
+        }
         return sectionController
     }
 
 
     private func imageSectionController() -> RowSectionController {
         let sectionController = RowSectionController()
-        sectionController.itemSizeBlock =  { item in
+        sectionController.itemSizeBlock =  { _, item in
             var height = 0
             if let urlString = sectionController.item as? String,
                 let heightString = urlString.split(separator: "/").last {
@@ -86,12 +91,17 @@ extension Home {
             }
             return cell
         }
+        sectionController.didSelectBlock = { (sectionController, item) in
+            let controller = DetailViewController()
+            controller.title = "图片"
+            sectionController.viewController?.navigationController?.pushViewController(controller, animated: true)
+        }
         return sectionController
     }
 
     private func gridSectionController() -> GridSectionController {
         let sectionController = GridSectionController()
-        sectionController.itemSizeBlock =  { _ in
+        sectionController.itemSizeBlock =  { sectionController, _ in
             let width = screenWidth/4
             return CGSize(width: width, height: width)
         }
@@ -120,6 +130,11 @@ extension Home {
             cell.label.text = item.title
             return cell
         }
+        sectionController.didSelectBlock = { (sectionController, item) in
+            let controller = DetailViewController()
+            controller.title = (item as! GridItem).title
+            sectionController.viewController?.navigationController?.pushViewController(controller, animated: true)
+        }
         return sectionController
     }
 
@@ -133,6 +148,11 @@ extension Home {
             }
             cell.text = item
             return cell
+        }
+        sectionController.didSelectBlock = { (sectionController, item) in
+            let controller = DetailViewController()
+            controller.title = (item as? String) ?? ""
+            sectionController.viewController?.navigationController?.pushViewController(controller, animated: true)
         }
         return sectionController
     }

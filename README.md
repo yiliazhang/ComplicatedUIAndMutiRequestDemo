@@ -10,6 +10,11 @@
 
 
 
+## 已知需要优化
+	* 参考 Eurake 优化
+	* cell 配置应该移到 CollectionManager 创建时
+	* CollectionManager与具体数据模型分离
+
 
 
 **说明：**

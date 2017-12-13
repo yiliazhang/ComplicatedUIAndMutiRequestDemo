@@ -13,16 +13,6 @@ let defaultItemWidth = screenWidth
 let defaultItemHeight: CGFloat = 44
 let defaultItemSize = CGSize(width: defaultItemWidth, height: defaultItemHeight)
 extension Home {
-//    public var itemSize: CGSize {
-//        switch self {
-//        case .gridItem:
-//            let itemSize = floor(screenWidth / 4)
-//            return CGSize(width: itemSize, height: itemSize)
-//        default:
-//            return CGSize(width: screenWidth, height: 44)
-//        }
-//    }
-
     public var cellClass: AnyClass {
         switch self {
         case .gridItem:

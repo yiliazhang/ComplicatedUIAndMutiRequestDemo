@@ -31,7 +31,7 @@ class AppInitializer {
         /// token 失效处理
         NetworkHelper.authorizeFailed = {
             AppInitializer.clearUserData()
-            UIApplication.shared.keyWindow?.rootViewController = UINavigationController(rootViewController: StackedViewController())
+            UIApplication.shared.keyWindow?.rootViewController = UINavigationController(rootViewController: DemoViewController())
         }
 
         ///检测更新
@@ -45,7 +45,7 @@ class AppInitializer {
 
     /// 设置 rootViewController
     class func rootViewController() -> UIViewController {
-        return UINavigationController(rootViewController: StackedViewController())
+        return UINavigationController(rootViewController: DemoViewController())
     }
 
     /// 网络请求测试

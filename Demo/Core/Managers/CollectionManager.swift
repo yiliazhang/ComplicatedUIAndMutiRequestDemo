@@ -36,7 +36,6 @@ final class CollectionManager {
 
     weak var delegate: UpdateData?
 
-
     init(_ identifier: String, request: Home = .none, startRequest: Bool = true, completion: @escaping (CollectionManager) -> Void = {_ in }) {
         self.identifier = identifier
         self.completion = completion

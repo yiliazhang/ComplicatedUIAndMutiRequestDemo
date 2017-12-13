@@ -15,53 +15,39 @@
 import UIKit
 import IGListKit
 import Moya
-
-final class StackedViewController: UIViewController {
+open class YILListViewController: UIViewController {
     /// IGListKit 需要用到
     lazy var adapter: ListAdapter = {
         return ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 1)
     }()
 
     /// 展示布局
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    @IBOutlet public var collectionView: UICollectionView!
 
     /// 数据配置工具
     lazy var listManager: ListManager = {
-        return ListManager("home", delegate: self)
+        return ListManager(Date().description, delegate: self)
     }()
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColor = UIColor(white: 0.95, alpha: 1)
-        view.addSubview(collectionView)
+        if collectionView == nil {
+            collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        }
+        if collectionView.superview == nil {
+            view.addSubview(collectionView)
+        }
         adapter.collectionView = collectionView
         adapter.dataSource = listManager
-
-        ///配置数据
-        configData()
     }
 
-    func configData() {
-        listManager.removeAll()
-        let gridOne = CollectionManager("gridOne", request: Home.gridItem)
-        let textOne = CollectionManager("textOne", request: Home.text)
-        let imageOne = CollectionManager("imageOne", request: .image)
-        let centerTextOne = CollectionManager("centerTextOne", request: .centerText)
-
-        listManager.register([gridOne, textOne, centerTextOne, imageOne])
-    }
-
-    override func viewDidLayoutSubviews() {
+    override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView.frame = view.bounds
     }
 }
 
-extension StackedViewController: UpdateData {
-    func reloadItem(_ atSections: IndexSet) {
-        self.collectionView.reloadSections(atSections)
-    }
-
+extension YILListViewController: UpdateData {
     func update() {
         self.adapter.performUpdates(animated: true, completion: nil)
     }

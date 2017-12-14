@@ -10,6 +10,7 @@ import UIKit
 import IGListKit
 import Moya
 
+let provider = MoyaProvider<MultiTarget>(plugins: [NetworkLoggerPlugin(verbose: true)])
 // MARK: - CollectionManager
 
 final class CollectionManager {
@@ -41,7 +42,6 @@ final class CollectionManager {
         self.startRequest = startRequest
         self.items = items;
         if !self.startRequest {
-//            completion(self)
             return
         }
         /// 重新创建一个模型和我的所有属性相同（以后想想能否通过实现 NSCopy 来优化）

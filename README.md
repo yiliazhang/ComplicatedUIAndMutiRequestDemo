@@ -8,18 +8,18 @@
 
 谢谢   ：）
 
-## 已知需改进
-	* CollectionManager 以实现某委托方式呈现，ListManager 添加的为实现该委托的元素，而不是指定的 CollectionManager；
-	* CollectionManager 和具体请求类型分开；
-	* 网络请求返回数据转模型需分层，测试数据从 CollectionManager剥离。
-	* CollectionManager 中指定`数据类型`和 `cell`类型
+
 
 **说明：**
 本项目界面布局主要是借助[ IGListKit](https://github.com/Instagram/IGListKit) ，网络请求选用的`Moya` 。
 
+
+
 ## Overview
 
 ![效果图](https://ws1.sinaimg.cn/large/006tNc79gy1fmg73d14gcg30af0ij1ey.gif)
+
+
 ## Requirements
 
 - Xcode 9.0+
@@ -66,8 +66,6 @@ class DemoViewController: RootListViewController {
     }
 }
 ```
-
-
 
 
 
@@ -186,17 +184,17 @@ final class CollectionManager {
 ```
 
 * `ManagerCenter`：为单一实例，包含项目中的所有 listManager。
+
 * 项目在 `IGListKit` 的基础上再次解耦封装了 
   * `RowListSectionController`
   * `HorizontalSectionController`
   * `GridSectionController`
+
 * `YILUtilKit` ：其他。
+
 * `CollectionItem`： CollectionManager 中的模型实现了 `ListDiffable`(参考 `IGListKit`)
 
-## 请求处理 `Moya`
-	* 项目中用信号量控制多并发请求
-	* 高效加载大图和网络图片spaceship
-	* 项目中随机 sleep (arc4random()%8)模仿不同线程耗时，返回刷新显示时顺序仍然没有变。
+  ​
 
 ## 鸣谢！
 

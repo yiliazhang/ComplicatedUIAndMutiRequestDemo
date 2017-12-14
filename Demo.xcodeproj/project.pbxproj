@@ -26,7 +26,6 @@
 		185E77FB1FDFE220000E0DFB /* RowSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185E77FA1FDFE220000E0DFB /* RowSectionController.swift */; };
 		185E78011FE00620000E0DFB /* CollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185E78001FE00620000E0DFB /* CollectionItem.swift */; };
 		1899BEDA1FE2B0BA00E96A46 /* TransformToListDiffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1899BED91FE2B0BA00E96A46 /* TransformToListDiffable.swift */; };
-		1899BEDE1FE2BBC000E96A46 /* MyTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1899BEDD1FE2BBC000E96A46 /* MyTarget.swift */; };
 		18AEEFAB1FDF6CBD008A6E87 /* ListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEEFAA1FDF6CBD008A6E87 /* ListManager.swift */; };
 		18AEEFB11FDFAED6008A6E87 /* GridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEEFB01FDFAED6008A6E87 /* GridItem.swift */; };
 		18AEEFB31FDFAFB3008A6E87 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEEFB21FDFAFB3008A6E87 /* HomeAPI.swift */; };
@@ -57,7 +56,6 @@
 		185E77FA1FDFE220000E0DFB /* RowSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowSectionController.swift; sourceTree = "<group>"; };
 		185E78001FE00620000E0DFB /* CollectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionItem.swift; sourceTree = "<group>"; };
 		1899BED91FE2B0BA00E96A46 /* TransformToListDiffable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformToListDiffable.swift; sourceTree = "<group>"; };
-		1899BEDD1FE2BBC000E96A46 /* MyTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTarget.swift; sourceTree = "<group>"; };
 		18AEEFAA1FDF6CBD008A6E87 /* ListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListManager.swift; sourceTree = "<group>"; };
 		18AEEFB01FDFAED6008A6E87 /* GridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridItem.swift; sourceTree = "<group>"; };
 		18AEEFB21FDFAFB3008A6E87 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 				185E77F61FDFE07A000E0DFB /* CollectionManager.swift */,
 				18AEEFAA1FDF6CBD008A6E87 /* ListManager.swift */,
 				18AEEFB41FDFC05A008A6E87 /* ManagerCenter.swift */,
-				1899BEDD1FE2BBC000E96A46 /* MyTarget.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -360,7 +357,6 @@
 				1812B14C1FDA5BF100995282 /* GridCell.swift in Sources */,
 				1812B1601FDA631800995282 /* CenterLabelCell.swift in Sources */,
 				1812B1021FDA3A2F00995282 /* AppDelegate.swift in Sources */,
-				1899BEDE1FE2BBC000E96A46 /* MyTarget.swift in Sources */,
 				180FEFB21FE0E0320061F9A5 /* HorizontalSectionController.swift in Sources */,
 				18FF20411FDD26950067613D /* SpinnerCell.swift in Sources */,
 				18AEEFB11FDFAED6008A6E87 /* GridItem.swift in Sources */,

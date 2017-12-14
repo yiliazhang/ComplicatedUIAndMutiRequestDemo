@@ -18,7 +18,7 @@
 
 ## Overview
 
-![2017-12-14 12_33_00](/Users/apple/Desktop/2017-12-14 12_33_00.gif)
+![效果图](https://ws1.sinaimg.cn/large/006tNc79gy1fmg73d14gcg30af0ij1ey.gif)
 ## Requirements
 
 - Xcode 9.0+

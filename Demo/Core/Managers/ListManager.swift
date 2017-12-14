@@ -162,7 +162,7 @@ extension ListManager: ListAdapterDataSource {
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
         let button = UIButton(type: .roundedRect)
 
-        button.setTitleColor(UIColor.appTintColor, for: .normal)
+        button.setTitleColor(UIColor.orange, for: .normal)
         button.setTitle("不好意思，没数据", for: .normal)
         return button
     }

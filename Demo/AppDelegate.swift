@@ -12,12 +12,12 @@ import UserNotifications
 
 class AppInitializer {
     ///应用启动设置
-    class func logOut() {
-        if let block = NetworkHelper.authorizeFailed {
-            block()
-        }
-        //TODO: - 清理数据
-    }
+//    class func logOut() {
+//        if let block = NetworkHelper.authorizeFailed {
+//            block()
+//        }
+//        //TODO: - 清理数据
+//    }
 
     /// 启动配置
     class func onAppStart() {
@@ -25,14 +25,14 @@ class AppInitializer {
         UIApplication.shared.statusBarStyle = .lightContent
 
         /// appearance 设置
-        UITabBarController.initializeOnce()
-        UINavigationController.initializeOnce()
+//        UITabBarController.initializeOnce()
+//        UINavigationController.initializeOnce()
 
         /// token 失效处理
-        NetworkHelper.authorizeFailed = {
-            AppInitializer.clearUserData()
-            UIApplication.shared.keyWindow?.rootViewController = UINavigationController(rootViewController: DemoViewController())
-        }
+//        NetworkHelper.authorizeFailed = {
+//            AppInitializer.clearUserData()
+//            UIApplication.shared.keyWindow?.rootViewController = UINavigationController(rootViewController: DemoViewController())
+//        }
 
         ///检测更新
 //        UpdateManager.update(Host.heBei.updateName)
@@ -40,25 +40,12 @@ class AppInitializer {
 
     /// 清理缓存文件夹
     class func clearUserData() {
-        YILSettings.shared[kCurrentUser] = nil
+//        YILSettings.shared[kCurrentUser] = nil
     }
 
     /// 设置 rootViewController
     class func rootViewController() -> UIViewController {
         return UINavigationController(rootViewController: DemoViewController())
-    }
-
-    /// 网络请求测试
-    class func test () {
-        NetworkHelper.actionCodable("test", params: ["34": "12"]) { (response: YILValueResponse<User>) in
-            print("hello codable")
-        }
-
-        NetworkHelper.actionJSON("test", params: ["34": "12"]) { (response) in
-            print("hello json")
-        }
-
-        NetworkHelper.actionJSON("test", params: ["34": "12"])
     }
 }
 

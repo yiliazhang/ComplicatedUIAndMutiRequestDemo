@@ -36,6 +36,7 @@ open class RootListViewController: UIViewController {
         }
         collectionView.backgroundColor = UIColor.white
         if collectionView.superview == nil {
+            collectionView.frame = view.bounds
             view.addSubview(collectionView)
         }
         adapter.collectionView = collectionView
@@ -44,7 +45,6 @@ open class RootListViewController: UIViewController {
 
     override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        collectionView.frame = view.bounds
     }
 }
 

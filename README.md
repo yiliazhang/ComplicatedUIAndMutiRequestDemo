@@ -27,6 +27,9 @@
 
 
 ### Example
+
+
+
 ```Swift
 class DemoViewController: RootListViewController {
     override func viewDidLoad() {
@@ -67,6 +70,9 @@ class DemoViewController: RootListViewController {
 ## 项目框架内容：
 
 * `RootListdViewController` ：最核心的ViewController，任何其他延伸实例都可以继承自它
+
+  ​
+
   ``` Swift
   import IGListKit
   import Moya
@@ -113,6 +119,8 @@ class DemoViewController: RootListViewController {
    ![结构图](https://ws4.sinaimg.cn/large/006tNc79gy1fmf57ufjrrj311o1aw4ok.jpg)
 
 * ` CollectionManager`： 包含每个需要显示的元素组。 `listtManager`的`_itemKeyValues` 中的Value。
+
+   ​
 
 ```Swift
 final class CollectionManager {

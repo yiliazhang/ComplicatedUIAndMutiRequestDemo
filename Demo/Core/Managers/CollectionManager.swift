@@ -53,10 +53,10 @@ final class CollectionManager {
         /// 重新创建一个模型和我的所有属性相同（以后想想能否通过实现 NSCopy 来优化）
         /// startRequest 设置为 false,防止重复循环请求，陷入死循环
         let myNewItem = CollectionManager(self.identifier,request: self.request, startRequest: false, sectionController: self.sectionController)
-        homeProvider.request(request) { (result) in
+//        homeProvider.request(request) { (result) in
             DispatchQueue.global().async {
                 semaphore.wait()
-                sleep(arc4random()%4)
+                sleep(arc4random()%8)
                 semaphore.signal()
                 DispatchQueue.main.sync {
             var tmpItems: [ListDiffable] = []
@@ -82,7 +82,7 @@ final class CollectionManager {
             }
                 }
             }
-        }
+//        }
     }
 }
 

@@ -2,7 +2,7 @@
 
 本项目为页面多层复杂结构和多请求接口实现案例。
 
-目前有点粗糙，仍在维护中...
+仍在维护中...
 
 不才，请指教。
 
@@ -174,7 +174,7 @@ final class CollectionManager {
 
 * `ManagerCenter`：为单一实例，包含项目中的所有 listManager。
 
-* 项目在 `IGListKit` 的基础上再次封装了 
+* 项目在 `IGListKit` 的基础上再次解耦封装了 
   * `RowListSectionController`
   * `HorizontalSectionController`
   * `GridSectionController`
@@ -183,7 +183,7 @@ final class CollectionManager {
 
 ## 请求处理 `Moya`
 	* 项目中用信号量控制多并发请求
-	* 高效加载大图和网络图片`spaceship.jpg`
+	* 高效加载大图和网络图片spaceship
 	* 项目中随机 sleep (arc4random()%8)模仿不同线程耗时，返回刷新显示时顺序仍然没有变。
 
 ## 鸣谢！

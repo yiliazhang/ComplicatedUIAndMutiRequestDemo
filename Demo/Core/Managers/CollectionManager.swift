@@ -105,7 +105,7 @@ extension CollectionManager {
     }
 
     private func demoCenterStrings() -> [CollectionItem] {
-        var index = arc4random()%8 + 5
+        var index = arc4random()%5 + 5
         var tmpItems: [String] = []
         while (index > 0) {
             index = index - 1
@@ -118,7 +118,7 @@ extension CollectionManager {
     }
 
     private func demoStrings() -> [String] {
-        var index = arc4random()%8 + 3
+        var index = arc4random()%5 + 3
         var tmpItems: [String] = []
         while (index > 0) {
             index = index - 1
@@ -132,7 +132,7 @@ extension CollectionManager {
 
     private func demoImageURLs() -> [String] {
         var tmpItems: [String] = []
-        var index = arc4random()%8 + 2
+        var index = arc4random()%5 + 2
         while index > 0 {
             index = index - 1
             let width = UIScreen.main.bounds.size.width

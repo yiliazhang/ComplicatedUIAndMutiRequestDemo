@@ -43,14 +43,10 @@ extension Home: TargetType {
     public var baseURL: URL { return URL(string: "https://api.github.com")! }
     public var path: String {
         switch self {
-        case .gridItem:
-            return "/zen"
         case .text:
-            return "/text"
-        case .centerText:
-            return "/centerText"
-        case .image:
-            return "/images"
+            let name = "ashfurrow"
+
+            return "/users/\(name.urlEscaped)/repos"
         default:
             return ""
         }
@@ -61,7 +57,7 @@ extension Home: TargetType {
 
     public var task: Task {
         switch self {
-        case .gridItem:
+        case .text:
             return .requestParameters(parameters: ["sort": "pushed"], encoding: URLEncoding.default)
         default:
             return .requestPlain
@@ -69,23 +65,32 @@ extension Home: TargetType {
     }
 
     public var validate: Bool {
-        switch self {
-        case .gridItem:
-            return false
-        default:
-            return true
-        }
+        return false
     }
     public var sampleData: Data {
         switch self {
-        case .gridItem:
-            return "数据".data(using: String.Encoding.utf8)!
+//        case .gridItem:
+//            return "[{\"backgroundImageURL\": \"https://unsplash.it/100/100\",\"title\":\"\(arc4random()%999 + arc4random()%9999)\"},{\"backgroundImageURL\": \"https://unsplash.it/200/200\",\"title\":\"\(arc4random()%999 + arc4random()%9999)\"},{\"backgroundImageURL\": \"https://unsplash.it/50/50\",\"title\":\"\(arc4random()%999 + arc4random()%9999)\"},{\"backgroundImageURL\": \"https://unsplash.it/80/80\",\"title\":\"\(arc4random()%999 + arc4random()%9999)\"}]".data(using: String.Encoding.utf8)!
         case .text:
-            return "数据".data(using: String.Encoding.utf8)!
-        case .centerText:
-            return "数据".data(using: String.Encoding.utf8)!
-        case .image:
-            return "数据".data(using: String.Encoding.utf8)!
+//            var index = 8
+//            var items: [String] = []
+//            while index > 0 {
+//                index = index - 1
+//                items.append("\(arc4random()%999 + arc4random()%9999)")
+//            }
+//
+//            do {
+//                return try JSONSerialization.data(withJSONObject: items, options: [])
+//            } catch {
+//                return Data()
+//            }
+            return "[\"Hello1\",\"Hello2\",\"Hello3\",\"Hello4\",\"Hello5\",\"Hello6\"]".data(using: String.Encoding.utf8)!
+//        case .centerText:
+//            return "[\"(arc4random()%999 + arc4random()%9999)\",\"\(arc4random()%999 + arc4random()%9999)","\(arc4random()%999 + arc4random()%9999)\",\"\(arc4random()%999 + arc4random()%9999)\",\"\(arc4random()%999 + arc4random()%9999)\"]".data(using: String.Encoding.utf8)!
+//        case .image:
+////            let width = UIScreen.main.bounds.size.width
+////            let height = Int(arc4random() % 100) + 100
+////            return "[\"https://unsplash.it/\(width)/\(Int(arc4random() % 100) + 100)\",\"https://unsplash.it/\(width)/\(Int(arc4random() % 100) + 100)\",\"https://unsplash.it/\(width)/\(Int(arc4random() % 100) + 100)\",\"https://unsplash.it/\(width)/\(Int(arc4random() % 100) + 100)\",\"https://unsplash.it/\(width)/\(Int(arc4random() % 100) + 100)\"]"
         default:
             return Data()
         }

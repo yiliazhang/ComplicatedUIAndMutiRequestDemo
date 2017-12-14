@@ -63,28 +63,6 @@ class GridCell: UICollectionViewCell {
             make.left.right.equalTo(contentView)
         }
     }
-
-    func config(_ model: ItemType?) {
-        guard let model = model else {
-            return
-        }
-        if !model.backgroundImageURL.isEmpty,
-            let url = URL(string: model.backgroundImageURL) {
-            backgroundImageView.kf.setImage(with: url, placeholder: UIImage(named: "spaceship.jpg"), options: nil, progressBlock: nil, completionHandler: nil)
-        } else {
-            if !model.backgroundImageName.isEmpty {
-                backgroundImageView.image = UIImage(named: model.backgroundImageName)
-            } else {
-                backgroundImageView.image = nil
-            }
-        }
-        if !model.imageName.isEmpty {
-            iconImageView.image = UIImage(named: model.imageName)
-        } else {
-            iconImageView.image = nil
-        }
-        label.text = model.title
-    }
 }
 
 extension GridCell: ListBindable {

@@ -8,7 +8,11 @@
 
 谢谢   ：）
 
-
+## 已知需改进
+	* CollectionManager 以实现某委托方式呈现，ListManager 添加的为实现该委托的元素，而不是指定的 CollectionManager；
+	* CollectionManager 和具体请求类型分开；
+	* 网络请求返回数据转模型需分层，测试数据从 CollectionManager剥离。
+	* CollectionManager 中指定`数据类型`和 `cell`类型
 
 **说明：**
 本项目界面布局主要是借助[ IGListKit](https://github.com/Instagram/IGListKit) ，网络请求选用的`Moya` 。

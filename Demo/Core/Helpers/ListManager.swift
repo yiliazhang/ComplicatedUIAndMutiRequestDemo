@@ -125,7 +125,9 @@ extension ListManager: ListAdapterDataSource {
         let _ = _itemIdentifiers.map { (key) -> String in
             if let item = _itemKeyValues[key],
                 item.items.count > 0 {
-                tmpItems.append(contentsOf: item.items)
+                item.items.forEach({ (value) in
+                    tmpItems.append(value)
+                })
             }
             return key
         }

@@ -21,20 +21,21 @@ class DemoViewController: RootListViewController {
     /// 如果需要增加请求，在 HomeAPI 中增加，
     func configData() {
         listManager.removeAll()
-        let gridOne = CollectionManager("gridOne", request: Home.gridItem) { () -> ListSectionController in
-            return self.gridSectionController()
-        }
-        let textOne = CollectionManager("textOne", request: .text) { () -> ListSectionController in
+//        let gridOne = CollectionManager("gridOne", request: Home.gridItem) { () -> ListSectionController in
+//            return self.gridSectionController()
+//        }
+        let textOne = CollectionManager("textOne", request: Home.text) { () -> ListSectionController in
             return self.textSectionController()
         }
-        let imageOne = CollectionManager("imageOne", request: .image) { () -> ListSectionController in
-            return self.imageSectionController()
-        }
-        let centerTextOne = CollectionManager("centerTextOne", request: .centerText) { () -> ListSectionController in
-            return self.embeddedSectionController()
-        }
+//        let imageOne = CollectionManager("imageOne", request: Home.image) { () -> ListSectionController in
+//            return self.imageSectionController()
+//        }
+//        let centerTextOne = CollectionManager("centerTextOne", request: Home.centerText) { () -> ListSectionController in
+//            return self.embeddedSectionController()
+//        }
 
-        listManager.register([gridOne, textOne, centerTextOne, imageOne])
+//        listManager.register([gridOne, textOne, centerTextOne, imageOne])
+        listManager.register(textOne)
     }
 
     override func didReceiveMemoryWarning() {
@@ -101,34 +102,35 @@ class DemoViewController: RootListViewController {
             let width = screenWidth/4
             return CGSize(width: width, height: width)
         }
-        sectionController.cellBlock = { (sectionController, item) in
-            guard let cell = sectionController.collectionContext?.dequeueReusableCell(of: GridCell.self, for: sectionController, at: 0) as? GridCell,
-                let item = item as? GridItem else {
-                    assert(false, "是不是哪里配错了，看看 数据模型，或者 cell 类型是否有误呢")
-                    //                fatalError()
-            }
-
-            if !item.backgroundImageURL.isEmpty,
-                let url = URL(string: item.backgroundImageURL) {
-                cell.backgroundImageView.kf.setImage(with: url, placeholder: UIImage(named: "spaceship.jpg"), options: nil, progressBlock: nil, completionHandler: nil)
-            } else {
-                if !item.backgroundImageName.isEmpty {
-                    cell.backgroundImageView.image = UIImage(named: item.backgroundImageName)
-                } else {
-                    cell.backgroundImageView.image = nil
+        sectionController.cellBlock = { sectionController, item in
+            guard let cell = sectionController.collectionContext?.dequeueReusableCell(of: GridCell.self, for: sectionController, at: 0) as? GridCell else {
+                                    assert(false, "是不是哪里配错了，看看 数据模型，或者 cell 类型是否有误呢")
+                                    //                fatalError()
+                            }
+            do {
+                let data = (item as AnyObject).data(using: String.Encoding.utf8.rawValue)
+                let myItem = try JSONDecoder().decode(GridItem.self, from: data!)
+                if  let avatar_url = myItem.avatar_url,
+                let url = URL(string: avatar_url) {
+                    cell.iconImageView.kf.setImage(with: url, placeholder: UIImage(named: "spaceship.jpg"), options: nil, progressBlock: nil, completionHandler: nil)
                 }
+                cell.label.text = myItem.login ?? "未知"
+                return cell
+            } catch {
+                return UICollectionViewCell()
             }
-            if !item.imageName.isEmpty {
-                cell.iconImageView.image = UIImage(named: item.imageName)
-            } else {
-                cell.iconImageView.image = nil
-            }
-            cell.label.text = item.title
-            return cell
         }
         sectionController.didSelectBlock = { (sectionController, item) in
+            var title = ""
+            do {
+                let data = (item as AnyObject).data(using: String.Encoding.utf8.rawValue)
+                let myItem = try JSONDecoder().decode(GridItem.self, from: data!)
+                title = myItem.login ?? ""
+            } catch {
+
+            }
             let controller = DetailViewController()
-            controller.title = (item as! GridItem).title
+            controller.title = title
             sectionController.viewController?.navigationController?.pushViewController(controller, animated: true)
         }
         return sectionController

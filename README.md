@@ -1,4 +1,4 @@
-# ComplicatedUIAndMutiRequestDemo
+#  ComplicatedUIAndMutiRequestDemo
 
 本项目为页面多层复杂结构和多请求接口实现案例。
 
@@ -16,8 +16,9 @@
 **说明：**
 本项目界面布局主要是借助[ IGListKit](https://github.com/Instagram/IGListKit) ，网络请求选用的`Moya` 。
 
+## Overview
 
-
+![2017-12-14 12_33_00](/Users/apple/Desktop/2017-12-14 12_33_00.gif)
 ## Requirements
 
 - Xcode 9.0+
@@ -111,10 +112,10 @@ class DemoViewController: RootListViewController {
   }
   ```
 
-* `ListManager`
+* `ListManager` 管理当前界面中的所有显示项
    ![结构图](https://ws4.sinaimg.cn/large/006tNc79gy1fmf57ufjrrj311o1aw4ok.jpg)
 
-* ` CollectionManager`： `listtManager`的`_itemKeyValues` 中的Value。
+* ` CollectionManager`： 包含每个需要显示的元素组。 `listtManager`的`_itemKeyValues` 中的Value。
 
 ```Swift
 final class CollectionManager {
@@ -176,13 +177,12 @@ final class CollectionManager {
 ```
 
 * `ManagerCenter`：为单一实例，包含项目中的所有 listManager。
-
 * 项目在 `IGListKit` 的基础上再次解耦封装了 
   * `RowListSectionController`
   * `HorizontalSectionController`
   * `GridSectionController`
-
 * `YILUtilKit` ：其他。
+* `CollectionItem`： CollectionManager 中的模型实现了 `ListDiffable`(参考 `IGListKit`)
 
 ## 请求处理 `Moya`
 	* 项目中用信号量控制多并发请求

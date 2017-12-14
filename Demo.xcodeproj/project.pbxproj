@@ -10,7 +10,6 @@
 		180FEFAE1FE0D4430061F9A5 /* GridSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180FEFAD1FE0D4430061F9A5 /* GridSectionController.swift */; };
 		180FEFB21FE0E0320061F9A5 /* HorizontalSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180FEFB01FE0E0320061F9A5 /* HorizontalSectionController.swift */; };
 		180FEFB41FE0FBEC0061F9A5 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180FEFB31FE0FBEC0061F9A5 /* DemoViewController.swift */; };
-		180FEFC51FE139230061F9A5 /* BaseItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180FEFC41FE139230061F9A5 /* BaseItemType.swift */; };
 		1812B1021FDA3A2F00995282 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812B1011FDA3A2F00995282 /* AppDelegate.swift */; };
 		1812B1071FDA3A2F00995282 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1812B1051FDA3A2F00995282 /* Main.storyboard */; };
 		1812B1091FDA3A2F00995282 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1812B1081FDA3A2F00995282 /* Assets.xcassets */; };
@@ -38,7 +37,6 @@
 		180FEFAD1FE0D4430061F9A5 /* GridSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridSectionController.swift; sourceTree = "<group>"; };
 		180FEFB01FE0E0320061F9A5 /* HorizontalSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalSectionController.swift; sourceTree = "<group>"; };
 		180FEFB31FE0FBEC0061F9A5 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
-		180FEFC41FE139230061F9A5 /* BaseItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseItemType.swift; sourceTree = "<group>"; };
 		1812B0FE1FDA3A2F00995282 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1812B1011FDA3A2F00995282 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1812B1061FDA3A2F00995282 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -161,7 +159,6 @@
 			children = (
 				18AEEFB01FDFAED6008A6E87 /* GridItem.swift */,
 				185E78001FE00620000E0DFB /* CollectionItem.swift */,
-				180FEFC41FE139230061F9A5 /* BaseItemType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -348,7 +345,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1812B1521FDA5E5500995282 /* LabelCell.swift in Sources */,
-				180FEFC51FE139230061F9A5 /* BaseItemType.swift in Sources */,
 				185E78011FE00620000E0DFB /* CollectionItem.swift in Sources */,
 				180FEFAE1FE0D4430061F9A5 /* GridSectionController.swift in Sources */,
 				1812B1621FDA634600995282 /* ImageCell.swift in Sources */,

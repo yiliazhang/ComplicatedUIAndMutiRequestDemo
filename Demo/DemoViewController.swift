@@ -14,6 +14,7 @@ class DemoViewController: RootListViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        title = "Demo"
         configData()
     }
 

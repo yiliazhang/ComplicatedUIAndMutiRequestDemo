@@ -67,10 +67,11 @@ final class HorizontalSectionController: ListSectionController, ListAdapterDataS
         let controller = RowSectionController()
         controller.cellBlock = self.cellBlock
         controller.didDeselectBlock = self.didDeselectBlock
-        controller.cellBlock = self.cellBlock
+        controller.didSelectBlock = self.didSelectBlock
         controller.itemSizeBlock = { _, _ in
             return self.itemSize
         }
+
         return controller
     }
 

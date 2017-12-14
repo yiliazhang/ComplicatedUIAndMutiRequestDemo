@@ -26,8 +26,18 @@ open class RootListViewController: UIViewController {
 
     /// 数据配置工具
     lazy var listManager: ListManager = {
-        return ListManager(Date().description, delegate: self)
+        return ListManager(Date().description, adapter: self.adapter)
     }()
+
+    /// 数据配置工具
+    lazy var emptyView: UIView = {
+        let button = UIButton(type: .roundedRect)
+        button.setTitleColor(UIColor.orange, for: .normal)
+        button.setTitle("不好意思，没数据", for: .normal)
+        self.listManager.emptyView = button
+        return button
+    }()
+
 
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -45,11 +55,5 @@ open class RootListViewController: UIViewController {
 
     override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-    }
-}
-
-extension RootListViewController: UpdateData {
-    func dataUpdated() {
-        self.adapter.performUpdates(animated: true, completion: nil)
     }
 }

@@ -9,13 +9,11 @@
 import UIKit
 import IGListKit
 
-@objc protocol UpdateData {
-    ///  让 delegate 实现刷新方法
-    func dataUpdated()
-}
 
 class ListManager: NSObject {
-    weak var delegate: UpdateData?
+    weak var adapter: ListAdapter?
+
+    var emptyView: UIView?
 
     private var _identifier: String!
     var identifier: String {
@@ -60,22 +58,27 @@ class ListManager: NSObject {
     /// - Parameter identifier: 唯一标识码
     init(_ identifier: String) {
         super.init()
+
         ManagerCenter.shared.register(self)
         self._identifier = identifier
     }
 
-    convenience init(_ identifier: String, delegate: UpdateData) {
+    /// 初始化函数
+    ///
+    /// - Parameters:
+    ///   - identifier: 唯一标识码
+    ///   - delegate: 实现update 方法
+    convenience init(_ identifier: String, adapter: ListAdapter) {
         self.init(identifier)
-        self.delegate = delegate
+        self.adapter = adapter
     }
-
 
     /// 注册数据
     func register(_ item: CollectionManager) {
         let identifier = item.identifier
         item.listManagerIdentifier = self.identifier
         _itemKeyValues[identifier] = item
-        delegate?.dataUpdated()
+        adapter?.performUpdates(animated: true, completion: nil)
     }
 
     /// 注册数据组
@@ -87,19 +90,19 @@ class ListManager: NSObject {
             item.listManagerIdentifier = self.identifier
             _itemKeyValues[item.identifier] = item
         }
-        delegate?.dataUpdated()
+        adapter?.performUpdates(animated: true, completion: nil)
     }
 
     ///移除所有
     func removeAll() {
         _itemKeyValues.removeAll()
-        delegate?.dataUpdated()
+        adapter?.performUpdates(animated: true, completion: nil)
     }
 
     ///移除 数据
     func remove(_ item: CollectionManager) {
         _itemKeyValues.removeValue(forKey: item.identifier)
-        delegate?.dataUpdated()
+        adapter?.performUpdates(animated: true, completion: nil)
     }
     ///移除 数据组
     func remove(_ items: [CollectionManager]) {
@@ -109,11 +112,10 @@ class ListManager: NSObject {
         items.forEach { (item) in
             _itemKeyValues.removeValue(forKey: item.identifier)
         }
-        delegate?.dataUpdated()
+        adapter?.performUpdates(animated: true, completion: nil)
     }
 }
 
-// MARK - : ListAdapterDataSource
 extension ListManager: ListAdapterDataSource {
 
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
@@ -125,9 +127,7 @@ extension ListManager: ListAdapterDataSource {
         let _ = _itemIdentifiers.map { (key) -> String in
             if let item = _itemKeyValues[key],
                 item.items.count > 0 {
-                item.items.forEach({ (value) in
-                    tmpItems.append(value)
-                })
+                tmpItems.append(contentsOf: item.items)
             }
             return key
         }
@@ -162,13 +162,6 @@ extension ListManager: ListAdapterDataSource {
     }
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
-        let button = UIButton(type: .roundedRect)
-
-        button.setTitleColor(UIColor.orange, for: .normal)
-        button.setTitle("不好意思，没数据", for: .normal)
-        return button
+        return self.emptyView
     }
 }
-
-
-

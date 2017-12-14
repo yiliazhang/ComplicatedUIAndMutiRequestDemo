@@ -17,6 +17,7 @@ class DemoViewController: RootListViewController {
         configData()
     }
 
+    /// 如果需要增加请求，在 HomeAPI 中增加，
     func configData() {
         listManager.removeAll()
         let gridOne = CollectionManager("gridOne", request: Home.gridItem) { () -> ListSectionController in
@@ -34,6 +35,7 @@ class DemoViewController: RootListViewController {
 
         listManager.register([gridOne, textOne, centerTextOne, imageOne])
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -2,19 +2,15 @@
 
 本项目为页面多层复杂结构和多请求接口实现案例。
 
-仍在维护中...
-
 不才，请指教。
 
-谢谢 ：）
+
+
+谢谢   ：）
 
 
 
 ## 已知需要优化
-	* 参考 Eurake 优化
-	* cell 配置应该移到 CollectionManager 创建时
-	* CollectionManager与具体数据模型分离
-
 
 
 **说明：**
@@ -42,13 +38,20 @@ class DemoViewController: RootListViewController {
         configData()
     }
 
-    func configData() {
+   func configData() {
         listManager.removeAll()
-        let gridOne = CollectionManager("gridOne", request: Home.gridItem)
-        let textOne = CollectionManager("textOne", request: Home.text)
-        let imageOne = CollectionManager("imageOne", request: .image)
-        let centerTextOne = CollectionManager("centerTextOne", request: .centerText)
-
+        let gridOne = CollectionManager("gridOne", request: Home.gridItem) { () -> ListSectionController in
+            return self.gridSectionController()
+        }
+        let textOne = CollectionManager("textOne", request: Home.text) { () -> ListSectionController in
+            return self.textSectionController()
+        }
+        let imageOne = CollectionManager("imageOne", request: Home.image) { () -> ListSectionController in
+            return self.imageSectionController()
+        }
+        let centerTextOne = CollectionManager("centerTextOne", request: Home.centerText) { () -> ListSectionController in
+            return self.embeddedSectionController()
+        }
         listManager.register([gridOne, textOne, centerTextOne, imageOne])
     }
   

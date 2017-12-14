@@ -33,15 +33,14 @@ final class CollectionManager {
 
     weak var delegate: UpdateData?
 
-    var itemSizeBlock: ((ListDiffable) -> CGSize)?
-    var didSelectBlock: ((ListDiffable) -> Void)?
-    var didDeselectBlock: ((ListDiffable) -> Void)?
+    var sectionController: () -> ListSectionController
 
-    init(_ identifier: String, request: Home = .none, startRequest: Bool = true, completion: @escaping (CollectionManager) -> Void = {_ in }) {
+    init(_ identifier: String, request: Home = .none, startRequest: Bool = true, sectionController: @escaping () -> ListSectionController) {
         self.identifier = identifier
-        self.completion = completion
         self.request = request
+        self.sectionController = sectionController
         self.startRequest = startRequest
+
         if self.request == .none {
             self.startRequest = false
             completion(self)
@@ -53,9 +52,8 @@ final class CollectionManager {
         }
         /// 重新创建一个模型和我的所有属性相同（以后想想能否通过实现 NSCopy 来优化）
         /// startRequest 设置为 false,防止重复循环请求，陷入死循环
-        let myNewItem = CollectionManager(self.identifier,request: self.request, startRequest: false, completion: self.completion)
+        let myNewItem = CollectionManager(self.identifier,request: self.request, startRequest: false, sectionController: self.sectionController)
         homeProvider.request(request) { (result) in
-
             DispatchQueue.global().async {
                 semaphore.wait()
                 sleep(arc4random()%4)

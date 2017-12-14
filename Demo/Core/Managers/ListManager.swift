@@ -152,7 +152,11 @@ extension ListManager: ListAdapterDataSource {
             }
         }
         assert(myCollectionManager != nil, "没有包含这个 object  的 CollectionManager")
-        return myCollectionManager?.request.sectionController ?? ListSectionController()
+        if let sectionController = myCollectionManager?.sectionController {
+            return sectionController()
+        } else {
+            return RowSectionController()
+        }
     }
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {

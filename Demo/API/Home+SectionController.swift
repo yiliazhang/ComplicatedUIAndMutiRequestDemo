@@ -8,10 +8,7 @@
 
 import Foundation
 import IGListKit
-let screenWidth = UIScreen.main.bounds.size.width
-let defaultItemWidth = screenWidth
-let defaultItemHeight: CGFloat = 44
-let defaultItemSize = CGSize(width: defaultItemWidth, height: defaultItemHeight)
+
 extension Home {
     public var cellClass: AnyClass {
         switch self {

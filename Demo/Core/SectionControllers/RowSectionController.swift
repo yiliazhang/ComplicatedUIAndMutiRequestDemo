@@ -8,6 +8,10 @@
 
 import Foundation
 import IGListKit
+let screenWidth = UIScreen.main.bounds.size.width
+let defaultItemWidth = screenWidth
+let defaultItemHeight: CGFloat = 44
+let defaultItemSize = CGSize(width: defaultItemWidth, height: defaultItemHeight)
 final class RowSectionController: ListSectionController {
     
     var itemSizeBlock: ((ListSectionController, ListDiffable) -> CGSize)?

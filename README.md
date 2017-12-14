@@ -10,9 +10,6 @@
 
 
 
-## 已知需要优化
-
-
 **说明：**
 本项目界面布局主要是借助[ IGListKit](https://github.com/Instagram/IGListKit) ，网络请求选用的`Moya` 。
 
@@ -23,7 +20,7 @@
 
 - Xcode 9.0+
 - iOS 9.0+
-- Interoperability with Swift 4.0+
+- Swift 4.0+
 - CocoaPods
 
 

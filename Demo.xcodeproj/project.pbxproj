@@ -139,6 +139,7 @@
 		1812B15B1FDA614100995282 /* SectionControllers */ = {
 			isa = PBXGroup;
 			children = (
+				185E78001FE00620000E0DFB /* CollectionItem.swift */,
 				1812B1551FDA5F5600995282 /* EmbeddedCollectionViewCell.swift */,
 				180FEFB01FE0E0320061F9A5 /* HorizontalSectionController.swift */,
 				180FEFAD1FE0D4430061F9A5 /* GridSectionController.swift */,
@@ -164,7 +165,6 @@
 			children = (
 				180999591FEA6C400068712B /* TransformToListDiffable.swift */,
 				18AEEFB01FDFAED6008A6E87 /* GridItem.swift */,
-				185E78001FE00620000E0DFB /* CollectionItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

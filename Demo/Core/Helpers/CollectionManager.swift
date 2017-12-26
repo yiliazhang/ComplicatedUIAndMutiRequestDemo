@@ -30,7 +30,7 @@ final class CollectionManager {
     var startRequest = true
 
     /// 请求类型
-    public var request: TargetType  = Home.none
+    public var request: TargetType
 
     var sectionController: () -> ListSectionController
 
@@ -44,23 +44,28 @@ final class CollectionManager {
         if !self.startRequest {
             return
         }
-        /// 重新创建一个模型和我的所有属性相同（以后想想能否通过实现 NSCopy 来优化）
-        /// startRequest 设置为 false,防止重复循环请求，陷入死循环
-        let myNewItem = CollectionManager(self.identifier, request: self.request, items: self.items, startRequest: false, sectionController: self.sectionController)
-        provider.request(MultiTarget(request)) { (result) in
+
+        self.request(self.request)
+    }
+
+    func request(_ targetType: TargetType) {
+        provider.request(MultiTarget(targetType)) { (result) in
             do {
-                    let response = try result.dematerialize()
-                    myNewItem.items = TransformToListDiffable.model(response, targetType: request)
-                    if let listManager = ManagerCenter.shared[self.listManagerIdentifier],
+                /// 重新创建一个模型和我的所有属性相同（以后想想能否通过实现 NSCopy 来优化）
+                /// startRequest 设置为 false,防止重复循环请求，陷入死循环
+                let myNewItem = CollectionManager(self.identifier, request: self.request, items: self.items, startRequest: false, sectionController: self.sectionController)
+                let response = try result.dematerialize()
+                myNewItem.items = TransformToListDiffable.models(response, targetType: self.request)
+                if let listManager = ManagerCenter.shared[self.listManagerIdentifier],
                     listManager.itemIdentifiers.contains(self.identifier) {
-                        //重新注册，替换原来的对应元素
-                        listManager.register(myNewItem)
-                    } else {
-                        assert(false, "哪里弄错了？")
-                    }
-                } catch {
-//                let printableError = error as CustomStringConvertible
-//                let errorMessage = printableError.description
+                    //重新注册，替换原来的对应元素
+                    listManager.register(myNewItem)
+                } else {
+                    assert(false, "哪里弄错了？")
+                }
+            } catch {
+                //                let printableError = error as CustomStringConvertible
+                //                let errorMessage = printableError.description
             }
         }
     }

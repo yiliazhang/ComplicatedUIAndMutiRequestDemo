@@ -57,8 +57,8 @@ extension Home: TargetType {
 
     public var task: Task {
         switch self {
-        case .text:
-            return .requestParameters(parameters: ["sort": "pushed"], encoding: URLEncoding.default)
+//        case .text:
+//            return .requestParameters(parameters: ["sort": "pushed"], encoding: URLEncoding.default)
         default:
             return .requestPlain
         }

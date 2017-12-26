@@ -34,7 +34,11 @@ class DemoViewController: RootListViewController {
             return self.embeddedSectionController()
         }
 
-        listManager.register([gridOne, textOne, centerTextOne, imageOne])
+        let textTwo = CollectionManager("textTwo", request: Home.text, items: ["12345678900000" as ListDiffable]) { () -> ListSectionController in
+            return self.textSectionController()
+        }
+
+        listManager.register([gridOne, textOne, centerTextOne, imageOne, textTwo])
     }
 
     override func didReceiveMemoryWarning() {
@@ -154,5 +158,4 @@ class DemoViewController: RootListViewController {
         }
         return sectionController
     }
-
 }

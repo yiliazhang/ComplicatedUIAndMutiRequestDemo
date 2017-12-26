@@ -11,8 +11,16 @@
 
 
 **说明：**
-本项目界面布局主要是借助[ IGListKit](https://github.com/Instagram/IGListKit) ，网络请求选用的`Moya` 。
+本项目界面布局主要是借助[ IGListKit](https://github.com/Instagram/IGListKit) ，网络请求选用的`Moya` ，主要思路参考 Eurake 等行业内标杆 。
 
+**优势：**
+1. 每个 cell 模块数量为动态
+2. 可以再扩展出一个 section，内涵不同的 cell
+3. ​
+
+**劣势：**
+1. 每个 cell 模块数量为动态
+2. 
 
 
 ## Overview

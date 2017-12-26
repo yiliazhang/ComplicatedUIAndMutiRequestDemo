@@ -1,46 +1,32 @@
 //
-//  DataConvertModel.swift
+//  Home+ListDiffable.swift
 //  Demo
 //
-//  Created by apple on 2017/12/14.
+//  Created by apple on 2017/12/20.
 //  Copyright © 2017年 apple. All rights reserved.
 //
 
 import Foundation
 import IGListKit
 import Moya
-struct TransformToListDiffable {
-    static func models(_ fromResponse: Moya.Response, targetType: TargetType) -> [ListDiffable] {
-        switch targetType {
-        case Home.centerText:
-            return demoCenterStrings()
-        case Home.text:
-            return demoStrings() as [ListDiffable]
-        case Home.image:
-            return demoImageURLs() as [ListDiffable]
-        case Home.gridItem:
-            return demoGridItems()
+extension Home {
+    var listDiffable: [ListDiffable] {
+        switch self {
+        case .centerText:
+            return Home.demoCenterStrings() as [ListDiffable]
+        case .text:
+            return Home.demoStrings() as [ListDiffable]
+        case .image:
+            return Home.demoImageURLs() as [ListDiffable]
+        case .gridItem:
+            return Home.demoGridItems()
         default:
             return []
         }
     }
-    static func model(_ fromResponse: Moya.Response, targetType: TargetType) -> ListDiffable {
-        switch targetType {
-        case Home.centerText:
-            return demoCenterStrings().first!
-        case Home.text:
-            return demoStrings().first as! ListDiffable
-        case Home.image:
-            return demoImageURLs().first as! ListDiffable
-        case Home.gridItem:
-            return demoGridItems().first!
-        default:
-            return NSDate.description() as ListDiffable
-        }
-    }
 }
 
-extension TransformToListDiffable {
+extension Home {
 
     // MARK: - Demo Data
 

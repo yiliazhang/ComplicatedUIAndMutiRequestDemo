@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180999581FEA68730068712B /* Home+ListDiffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180999571FEA68730068712B /* Home+ListDiffable.swift */; };
+		1809995A1FEA6C400068712B /* TransformToListDiffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180999591FEA6C400068712B /* TransformToListDiffable.swift */; };
 		180FEFAE1FE0D4430061F9A5 /* GridSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180FEFAD1FE0D4430061F9A5 /* GridSectionController.swift */; };
 		180FEFB21FE0E0320061F9A5 /* HorizontalSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180FEFB01FE0E0320061F9A5 /* HorizontalSectionController.swift */; };
 		180FEFB41FE0FBEC0061F9A5 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180FEFB31FE0FBEC0061F9A5 /* DemoViewController.swift */; };
@@ -25,7 +27,6 @@
 		185E77F71FDFE07A000E0DFB /* CollectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185E77F61FDFE07A000E0DFB /* CollectionManager.swift */; };
 		185E77FB1FDFE220000E0DFB /* RowSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185E77FA1FDFE220000E0DFB /* RowSectionController.swift */; };
 		185E78011FE00620000E0DFB /* CollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185E78001FE00620000E0DFB /* CollectionItem.swift */; };
-		1899BEDA1FE2B0BA00E96A46 /* TransformToListDiffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1899BED91FE2B0BA00E96A46 /* TransformToListDiffable.swift */; };
 		18AEEFAB1FDF6CBD008A6E87 /* ListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEEFAA1FDF6CBD008A6E87 /* ListManager.swift */; };
 		18AEEFB11FDFAED6008A6E87 /* GridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEEFB01FDFAED6008A6E87 /* GridItem.swift */; };
 		18AEEFB31FDFAFB3008A6E87 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEEFB21FDFAFB3008A6E87 /* HomeAPI.swift */; };
@@ -35,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		180999571FEA68730068712B /* Home+ListDiffable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+ListDiffable.swift"; sourceTree = "<group>"; };
+		180999591FEA6C400068712B /* TransformToListDiffable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformToListDiffable.swift; sourceTree = "<group>"; };
 		180FEFAD1FE0D4430061F9A5 /* GridSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridSectionController.swift; sourceTree = "<group>"; };
 		180FEFB01FE0E0320061F9A5 /* HorizontalSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalSectionController.swift; sourceTree = "<group>"; };
 		180FEFB31FE0FBEC0061F9A5 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
@@ -55,7 +58,6 @@
 		185E77F61FDFE07A000E0DFB /* CollectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionManager.swift; sourceTree = "<group>"; };
 		185E77FA1FDFE220000E0DFB /* RowSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowSectionController.swift; sourceTree = "<group>"; };
 		185E78001FE00620000E0DFB /* CollectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionItem.swift; sourceTree = "<group>"; };
-		1899BED91FE2B0BA00E96A46 /* TransformToListDiffable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformToListDiffable.swift; sourceTree = "<group>"; };
 		18AEEFAA1FDF6CBD008A6E87 /* ListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListManager.swift; sourceTree = "<group>"; };
 		18AEEFB01FDFAED6008A6E87 /* GridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridItem.swift; sourceTree = "<group>"; };
 		18AEEFB21FDFAFB3008A6E87 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				18AEEFB21FDFAFB3008A6E87 /* HomeAPI.swift */,
+				180999571FEA68730068712B /* Home+ListDiffable.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -136,6 +139,7 @@
 		1812B15B1FDA614100995282 /* SectionControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1812B1551FDA5F5600995282 /* EmbeddedCollectionViewCell.swift */,
 				180FEFB01FE0E0320061F9A5 /* HorizontalSectionController.swift */,
 				180FEFAD1FE0D4430061F9A5 /* GridSectionController.swift */,
 				185E77FA1FDFE220000E0DFB /* RowSectionController.swift */,
@@ -149,7 +153,6 @@
 				18FF20401FDD26940067613D /* SpinnerCell.swift */,
 				1812B1611FDA634600995282 /* ImageCell.swift */,
 				1812B15F1FDA631800995282 /* CenterLabelCell.swift */,
-				1812B1551FDA5F5600995282 /* EmbeddedCollectionViewCell.swift */,
 				1812B1511FDA5E5500995282 /* LabelCell.swift */,
 				1812B14B1FDA5BF100995282 /* GridCell.swift */,
 			);
@@ -159,7 +162,7 @@
 		18481B341FDCDC69007A22DB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1899BED91FE2B0BA00E96A46 /* TransformToListDiffable.swift */,
+				180999591FEA6C400068712B /* TransformToListDiffable.swift */,
 				18AEEFB01FDFAED6008A6E87 /* GridItem.swift */,
 				185E78001FE00620000E0DFB /* CollectionItem.swift */,
 			);
@@ -292,6 +295,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Demo/Pods-Demo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/DWURecyclingAlert/DWURecyclingAlert.framework",
 				"${BUILT_PRODUCTS_DIR}/IGListKit/IGListKit.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/KRActivityIndicatorView/KRActivityIndicatorView.framework",
@@ -308,6 +312,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DWURecyclingAlert.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IGListKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KRActivityIndicatorView.framework",
@@ -361,9 +366,10 @@
 				18FF20411FDD26950067613D /* SpinnerCell.swift in Sources */,
 				18AEEFB11FDFAED6008A6E87 /* GridItem.swift in Sources */,
 				18AEEFB51FDFC05A008A6E87 /* ManagerCenter.swift in Sources */,
+				180999581FEA68730068712B /* Home+ListDiffable.swift in Sources */,
+				1809995A1FEA6C400068712B /* TransformToListDiffable.swift in Sources */,
 				185E77FB1FDFE220000E0DFB /* RowSectionController.swift in Sources */,
 				18AEEFAB1FDF6CBD008A6E87 /* ListManager.swift in Sources */,
-				1899BEDA1FE2B0BA00E96A46 /* TransformToListDiffable.swift in Sources */,
 				1812B1561FDA5F5600995282 /* EmbeddedCollectionViewCell.swift in Sources */,
 				1838C3311FDA70B6002B8284 /* DetailViewController.swift in Sources */,
 				18AEEFB31FDFAFB3008A6E87 /* HomeAPI.swift in Sources */,

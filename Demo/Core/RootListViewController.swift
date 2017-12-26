@@ -29,15 +29,12 @@ open class RootListViewController: UIViewController {
         return ListManager(Date().description, adapter: self.adapter)
     }()
 
-    /// 数据配置工具
-    lazy var emptyView: UIView = {
-        let button = UIButton(type: .roundedRect)
-        button.setTitleColor(UIColor.orange, for: .normal)
-        button.setTitle("不好意思，没数据", for: .normal)
-        self.listManager.emptyView = button
-        return button
-    }()
-
+    /// 展示布局
+    @IBOutlet public var emptyView: UIView? {
+        didSet {
+            self.listManager.emptyView = emptyView
+        }
+    }
 
     override open func viewDidLoad() {
         super.viewDidLoad()

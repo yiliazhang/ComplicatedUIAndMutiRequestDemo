@@ -36,6 +36,8 @@ pod 'SwiftyBeaver'
 #pod 'JPush'
 #pod 'LGButton'
 #pod 'BaiduMapKit'
+pod 'DWURecyclingAlert'
+
 end
 target 'Demo' do
   pods

@@ -67,7 +67,6 @@ class DemoViewController: RootListViewController {
         return sectionController
     }
 
-
     private func imageSectionController() -> RowSectionController {
         let sectionController = RowSectionController()
         sectionController.itemSizeBlock =  { _, item in
@@ -158,4 +157,5 @@ class DemoViewController: RootListViewController {
         }
         return sectionController
     }
+
 }

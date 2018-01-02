@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		180999581FEA68730068712B /* Home+ListDiffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180999571FEA68730068712B /* Home+ListDiffable.swift */; };
 		1809995A1FEA6C400068712B /* TransformToListDiffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180999591FEA6C400068712B /* TransformToListDiffable.swift */; };
 		180FEFAE1FE0D4430061F9A5 /* GridSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180FEFAD1FE0D4430061F9A5 /* GridSectionController.swift */; };
 		180FEFB21FE0E0320061F9A5 /* HorizontalSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180FEFB01FE0E0320061F9A5 /* HorizontalSectionController.swift */; };
@@ -36,7 +35,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		180999571FEA68730068712B /* Home+ListDiffable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+ListDiffable.swift"; sourceTree = "<group>"; };
 		180999591FEA6C400068712B /* TransformToListDiffable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformToListDiffable.swift; sourceTree = "<group>"; };
 		180FEFAD1FE0D4430061F9A5 /* GridSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridSectionController.swift; sourceTree = "<group>"; };
 		180FEFB01FE0E0320061F9A5 /* HorizontalSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalSectionController.swift; sourceTree = "<group>"; };
@@ -84,7 +82,6 @@
 			isa = PBXGroup;
 			children = (
 				18AEEFB21FDFAFB3008A6E87 /* HomeAPI.swift */,
-				180999571FEA68730068712B /* Home+ListDiffable.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -366,7 +363,6 @@
 				18FF20411FDD26950067613D /* SpinnerCell.swift in Sources */,
 				18AEEFB11FDFAED6008A6E87 /* GridItem.swift in Sources */,
 				18AEEFB51FDFC05A008A6E87 /* ManagerCenter.swift in Sources */,
-				180999581FEA68730068712B /* Home+ListDiffable.swift in Sources */,
 				1809995A1FEA6C400068712B /* TransformToListDiffable.swift in Sources */,
 				185E77FB1FDFE220000E0DFB /* RowSectionController.swift in Sources */,
 				18AEEFAB1FDF6CBD008A6E87 /* ListManager.swift in Sources */,

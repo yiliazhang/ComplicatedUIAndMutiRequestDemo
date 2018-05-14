@@ -100,6 +100,37 @@ extension Home: TargetType {
     }
 }
 
+extension Home: TransformToListDiffable {
+    func models(_ fromResponse: Moya.Response, targetType: TargetType) -> [ListDiffable] {
+        switch self {
+        case Home.centerText:
+            return demoCenterStrings()
+        case Home.text:
+            return demoStrings() as [ListDiffable]
+        case Home.image:
+            return demoImageURLs() as [ListDiffable]
+        case Home.gridItem:
+            return demoGridItems()
+        default:
+            return []
+        }
+    }
+    func model(_ fromResponse: Moya.Response, targetType: TargetType) -> ListDiffable {
+        switch self {
+        case Home.centerText:
+            return demoCenterStrings().first!
+        case Home.text:
+            return demoStrings().first! as ListDiffable
+        case Home.image:
+            return demoImageURLs().first! as ListDiffable
+        case Home.gridItem:
+            return demoGridItems().first!
+        default:
+            return NSDate.description() as ListDiffable
+        }
+    }
+}
+
 public func url(_ route: TargetType) -> String {
     return route.baseURL.appendingPathComponent(route.path).absoluteString
 }
@@ -114,4 +145,57 @@ extension Moya.Response {
         }
         return array
     }
+}
+
+
+
+
+// MARK: - test data
+
+// MARK: - Demo Data
+
+private func demoGridItems() -> [CollectionItem] {
+    let items = [GridItem(imageName: "icon_zsk", title: "\(arc4random()%999 + arc4random()%9999)"),
+                 GridItem(imageName: "icon_wghyw", title: "\(arc4random()%999 + arc4random()%9999)"),
+                 GridItem(imageName: "icon_daka", title: "\(arc4random()%999 + arc4random()%9999)"),
+                 GridItem(imageName: "icon_fjgl", title: "\(arc4random()%999 + arc4random()%9999)"),]
+    return [CollectionItem(items)]
+}
+
+private func demoCenterStrings() -> [CollectionItem] {
+    var index = arc4random()%5 + 5
+    var tmpItems: [String] = []
+    while (index > 0) {
+        index = index - 1
+        let value = "\(arc4random()%999 + arc4random()%9999)"
+        if !tmpItems.contains(value) {
+            tmpItems.append(value)
+        }
+    }
+    return [CollectionItem(tmpItems as [ListDiffable])]
+}
+
+private func demoStrings() -> [String] {
+    var index = arc4random()%5 + 3
+    var tmpItems: [String] = []
+    while (index > 0) {
+        index = index - 1
+        let value = "\(arc4random()%999 + arc4random()%9999)"
+        if !tmpItems.contains(value) {
+            tmpItems.append(value)
+        }
+    }
+    return tmpItems
+}
+
+private func demoImageURLs() -> [String] {
+    var tmpItems: [String] = []
+    var index = arc4random()%5 + 2
+    while index > 0 {
+        index = index - 1
+        let width = UIScreen.main.bounds.size.width
+        let height = Int(arc4random() % 100) + 100
+        tmpItems.append("https://unsplash.it/" + width.description + "/" + height.description)
+    }
+    return tmpItems
 }

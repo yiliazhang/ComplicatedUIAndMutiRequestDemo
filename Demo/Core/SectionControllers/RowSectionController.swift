@@ -13,7 +13,6 @@ let defaultItemWidth = screenWidth
 let defaultItemHeight: CGFloat = 44
 let defaultItemSize = CGSize(width: defaultItemWidth, height: defaultItemHeight)
 final class RowSectionController: ListSectionController {
-    
     var itemSizeBlock: ((ListSectionController, ListDiffable) -> CGSize)?
     var didSelectBlock: ((ListSectionController, ListDiffable) -> Void)?
     var didDeselectBlock: ((ListSectionController, ListDiffable) -> Void)?

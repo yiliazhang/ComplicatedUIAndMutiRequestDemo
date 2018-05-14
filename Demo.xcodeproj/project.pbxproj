@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1809995A1FEA6C400068712B /* TransformToListDiffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180999591FEA6C400068712B /* TransformToListDiffable.swift */; };
 		180FEFAE1FE0D4430061F9A5 /* GridSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180FEFAD1FE0D4430061F9A5 /* GridSectionController.swift */; };
 		180FEFB21FE0E0320061F9A5 /* HorizontalSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180FEFB01FE0E0320061F9A5 /* HorizontalSectionController.swift */; };
 		180FEFB41FE0FBEC0061F9A5 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180FEFB31FE0FBEC0061F9A5 /* DemoViewController.swift */; };
@@ -35,7 +34,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		180999591FEA6C400068712B /* TransformToListDiffable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformToListDiffable.swift; sourceTree = "<group>"; };
 		180FEFAD1FE0D4430061F9A5 /* GridSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridSectionController.swift; sourceTree = "<group>"; };
 		180FEFB01FE0E0320061F9A5 /* HorizontalSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalSectionController.swift; sourceTree = "<group>"; };
 		180FEFB31FE0FBEC0061F9A5 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
@@ -160,7 +158,6 @@
 		18481B341FDCDC69007A22DB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				180999591FEA6C400068712B /* TransformToListDiffable.swift */,
 				18AEEFB01FDFAED6008A6E87 /* GridItem.swift */,
 			);
 			path = Model;
@@ -223,7 +220,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = apple;
 				TargetAttributes = {
 					1812B0FD1FDA3A2F00995282 = {
@@ -363,7 +360,6 @@
 				18FF20411FDD26950067613D /* SpinnerCell.swift in Sources */,
 				18AEEFB11FDFAED6008A6E87 /* GridItem.swift in Sources */,
 				18AEEFB51FDFC05A008A6E87 /* ManagerCenter.swift in Sources */,
-				1809995A1FEA6C400068712B /* TransformToListDiffable.swift in Sources */,
 				185E77FB1FDFE220000E0DFB /* RowSectionController.swift in Sources */,
 				18AEEFAB1FDF6CBD008A6E87 /* ListManager.swift in Sources */,
 				1812B1561FDA5F5600995282 /* EmbeddedCollectionViewCell.swift in Sources */,
@@ -408,6 +404,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -415,6 +412,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -465,6 +463,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -472,6 +471,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

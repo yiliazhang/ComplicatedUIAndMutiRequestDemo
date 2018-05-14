@@ -10,6 +10,10 @@ import UIKit
 import IGListKit
 import Moya
 
+protocol TransformToListDiffable {
+    func models(_ fromResponse: Moya.Response, targetType: TargetType) -> [ListDiffable]
+    func model(_ fromResponse: Moya.Response, targetType: TargetType) -> ListDiffable
+}
 let provider = MoyaProvider<MultiTarget>(plugins: [NetworkLoggerPlugin(verbose: true)])
 // MARK: - CollectionManager
 
@@ -30,11 +34,11 @@ final class CollectionManager {
     var startRequest = true
 
     /// 请求类型
-    public var request: TargetType
+    public var request: TargetType & TransformToListDiffable
 
     var sectionController: () -> ListSectionController
 
-    init(_ identifier: String, request: TargetType,items: [ListDiffable] = [], startRequest: Bool = true, sectionController: @escaping () -> ListSectionController) {
+    init(_ identifier: String, request: TargetType  & TransformToListDiffable,items: [ListDiffable] = [], startRequest: Bool = true, sectionController: @escaping () -> ListSectionController) {
 
         self.identifier = identifier
         self.request = request
@@ -48,14 +52,15 @@ final class CollectionManager {
         self.request(self.request)
     }
 
-    func request(_ targetType: TargetType) {
+    func request(_ targetType: TargetType & TransformToListDiffable) {
         provider.request(MultiTarget(targetType)) { (result) in
             do {
                 /// 重新创建一个模型和我的所有属性相同（以后想想能否通过实现 NSCopy 来优化）
                 /// startRequest 设置为 false,防止重复循环请求，陷入死循环
                 let myNewItem = CollectionManager(self.identifier, request: self.request, items: self.items, startRequest: false, sectionController: self.sectionController)
                 let response = try result.dematerialize()
-                myNewItem.items = TransformToListDiffable.models(response, targetType: self.request)
+                
+                myNewItem.items = targetType.models(response, targetType: self.request)
                 if let listManager = ManagerCenter.shared[self.listManagerIdentifier],
                     listManager.itemIdentifiers.contains(self.identifier) {
                     //重新注册，替换原来的对应元素

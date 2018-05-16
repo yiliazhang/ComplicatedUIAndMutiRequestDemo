@@ -21,6 +21,11 @@ class DemoViewController: RootListViewController {
     /// 如果需要增加请求，在 HomeAPI 中增加，
     func configData() {
         listManager.removeAll()
+
+        let cycleScrollView = CollectionManager("cycleScrollView", items: demoGridItems()) { () -> ListSectionController in
+            return self.gridSectionController()
+        }
+
         let gridOne = CollectionManager("gridOne", request: Home.gridItem) { () -> ListSectionController in
             return self.gridSectionController()
         }
@@ -38,7 +43,7 @@ class DemoViewController: RootListViewController {
             return self.textSectionController()
         }
 
-        listManager.register([gridOne, textOne, centerTextOne, imageOne, textTwo])
+        listManager.register([cycleScrollView, gridOne, textOne, centerTextOne, imageOne, textTwo])
     }
 
     override func didReceiveMemoryWarning() {
@@ -157,5 +162,13 @@ class DemoViewController: RootListViewController {
         }
         return sectionController
     }
-
 }
+
+private func demoGridItems() -> [CollectionItem] {
+    let items = [GridItem(imageName: "icon_zsk", title: "\(arc4random()%999 + arc4random()%9999)"),
+                 GridItem(imageName: "icon_wghyw", title: "\(arc4random()%999 + arc4random()%9999)"),
+                 GridItem(imageName: "icon_daka", title: "\(arc4random()%999 + arc4random()%9999)"),
+                 GridItem(imageName: "icon_fjgl", title: "\(arc4random()%999 + arc4random()%9999)"),]
+    return [CollectionItem(items)]
+}
+

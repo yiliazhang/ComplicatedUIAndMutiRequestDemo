@@ -21,7 +21,7 @@ class AppInitializer {
 
     /// 启动配置
     class func onAppStart() {
-        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.shared.enable = true
         UIApplication.shared.statusBarStyle = .lightContent
 
         /// appearance 设置

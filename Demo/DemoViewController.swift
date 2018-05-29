@@ -8,7 +8,8 @@
 
 import UIKit
 import IGListKit
-class DemoViewController: RootListViewController {
+import ComplecatedViewController
+class DemoViewController: ComplecatedViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

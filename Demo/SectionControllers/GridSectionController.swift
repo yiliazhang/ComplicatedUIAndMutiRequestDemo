@@ -15,6 +15,7 @@
 import UIKit
 import IGListKit
 import Kingfisher
+import ComplecatedViewController
 final class GridSectionController: ListSectionController {
     var items: [ListDiffable] = []
     var collectionItem: CollectionItem?

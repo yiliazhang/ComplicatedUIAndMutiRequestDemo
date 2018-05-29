@@ -1,6 +1,5 @@
 PODS:
   - Alamofire (4.7.2)
-  - CryptoSwift (0.9.0)
   - DWURecyclingAlert (1.0.2)
   - IGListKit (3.4.0):
     - IGListKit/Default (= 3.4.0)
@@ -19,13 +18,8 @@ PODS:
     - Result (~> 3.0)
   - Result (3.2.4)
   - SnapKit (4.0.0)
-  - SwiftMessages (4.1.2)
-  - SwiftyBeaver (1.5.2)
-  - SwiftyJSON (4.1.0)
 
 DEPENDENCIES:
-  - Alamofire
-  - CryptoSwift
   - DWURecyclingAlert
   - IGListKit
   - IQKeyboardManagerSwift
@@ -33,14 +27,10 @@ DEPENDENCIES:
   - KRProgressHUD
   - Moya
   - SnapKit
-  - SwiftMessages
-  - SwiftyBeaver
-  - SwiftyJSON
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
-    - CryptoSwift
     - DWURecyclingAlert
     - IGListKit
     - IQKeyboardManagerSwift
@@ -50,13 +40,9 @@ SPEC REPOS:
     - Moya
     - Result
     - SnapKit
-    - SwiftMessages
-    - SwiftyBeaver
-    - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
-  CryptoSwift: bca8c5b653dcc2d9734409242a070ff53bafac86
   DWURecyclingAlert: 02d8ba56b2082c08c6bc2645cc2cc445f307817d
   IGListKit: 7a5d788e9fb746bcd402baa8e8b24bc3bd2a5a07
   IQKeyboardManagerSwift: 04e8679f85e496bb2c474eeb9284052f1b3c391c
@@ -66,10 +52,7 @@ SPEC CHECKSUMS:
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
-  SwiftMessages: d81f48c1f8b6bc1dbebdfffe11226f0344f937ca
-  SwiftyBeaver: 85daaaa2b3ae6e31b7b55c99430e8b91dac088af
-  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: e1a09f8d28b8bf03772dbea26073bde839f180cc
+PODFILE CHECKSUM: bad65f382aa4e59b2ccb70764cb458e35406af5c
 
-COCOAPODS: 1.5.0.beta.1
+COCOAPODS: 1.5.3

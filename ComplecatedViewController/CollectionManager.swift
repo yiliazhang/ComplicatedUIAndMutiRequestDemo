@@ -10,14 +10,14 @@ import UIKit
 import IGListKit
 import Moya
 
-protocol TransformToListDiffable {
+public protocol TransformToListDiffable {
     func models(_ fromResponse: Moya.Response, targetType: TargetType) -> [ListDiffable]
     func model(_ fromResponse: Moya.Response, targetType: TargetType) -> ListDiffable
 }
 let provider = MoyaProvider<MultiTarget>(plugins: [NetworkLoggerPlugin(verbose: true)])
 // MARK: - CollectionManager
 
-final class CollectionManager {
+public final class CollectionManager {
     /// 配置完成后需要做的事，目前没用到
     //    var completion: ((CollectionManager) -> Void) = { _ in }
 
@@ -44,7 +44,7 @@ final class CollectionManager {
     ///   - identifier: <#identifier description#>
     ///   - items: <#items description#>
     ///   - sectionController: <#sectionController description#>
-    init(_ identifier: String, items: [ListDiffable] = [], sectionController: @escaping () -> ListSectionController) {
+    public init(_ identifier: String, items: [ListDiffable] = [], sectionController: @escaping () -> ListSectionController) {
         self.identifier = identifier
         self.sectionController = sectionController
         self.items = items;
@@ -62,7 +62,7 @@ final class CollectionManager {
     ///   - items: <#items description#>
     ///   - startRequest: <#startRequest description#>
     ///   - sectionController: <#sectionController description#>
-    init(_ identifier: String, request: TargetType & TransformToListDiffable , items: [ListDiffable] = [], startRequest: Bool = true, sectionController: @escaping () -> ListSectionController) {
+    public init(_ identifier: String, request: TargetType & TransformToListDiffable , items: [ListDiffable] = [], startRequest: Bool = true, sectionController: @escaping () -> ListSectionController) {
 
         self.identifier = identifier
         self.request = request

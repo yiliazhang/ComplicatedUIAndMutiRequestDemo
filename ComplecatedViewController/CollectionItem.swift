@@ -9,9 +9,9 @@
 import Foundation
 import IGListKit
 
-final class CollectionItem: NSObject {
-    var items: [ListDiffable] = []
-    init(_ items: [ListDiffable]) {
+open class CollectionItem: NSObject {
+    open var items: [ListDiffable] = []
+    public init(_ items: [ListDiffable]) {
         super.init()
         self.items = items
     }
@@ -19,11 +19,11 @@ final class CollectionItem: NSObject {
 
 extension CollectionItem: ListDiffable {
 
-    func diffIdentifier() -> NSObjectProtocol {
+    public func diffIdentifier() -> NSObjectProtocol {
         return self
     }
 
-    func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
+    public func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
         return self === object ? true : self.isEqual(object)
     }
 }

@@ -9,6 +9,7 @@
 import Foundation
 import Moya
 import IGListKit
+import ComplecatedViewController
 // MARK: - Provider setup
 
 private func JSONResponseDataFormatter(_ data: Data) -> Data {
@@ -101,7 +102,7 @@ extension Home: TargetType {
 }
 
 extension Home: TransformToListDiffable {
-    func models(_ fromResponse: Moya.Response, targetType: TargetType) -> [ListDiffable] {
+    public func models(_ fromResponse: Moya.Response, targetType: TargetType) -> [ListDiffable] {
         switch self {
         case Home.centerText:
             return demoCenterStrings()
@@ -115,7 +116,7 @@ extension Home: TransformToListDiffable {
             return []
         }
     }
-    func model(_ fromResponse: Moya.Response, targetType: TargetType) -> ListDiffable {
+    public func model(_ fromResponse: Moya.Response, targetType: TargetType) -> ListDiffable {
         switch self {
         case Home.centerText:
             return demoCenterStrings().first!

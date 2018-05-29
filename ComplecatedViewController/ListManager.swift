@@ -9,8 +9,8 @@
 import UIKit
 import IGListKit
 
-class ListManager: NSObject {
-    weak var adapter: ListAdapter?
+open class ListManager: NSObject {
+    open weak var adapter: ListAdapter?
 
     var emptyView: UIView?
 
@@ -73,7 +73,7 @@ class ListManager: NSObject {
     }
 
     /// 注册数据
-    func register(_ item: CollectionManager) {
+    open func register(_ item: CollectionManager) {
         let identifier = item.identifier
         item.listManagerIdentifier = self.identifier
         _itemKeyValues[identifier] = item
@@ -81,7 +81,7 @@ class ListManager: NSObject {
     }
 
     /// 注册数据组
-    func register(_ items: [CollectionManager]) {
+    open func register(_ items: [CollectionManager]) {
         if items.count == 0 {
             return
         }
@@ -93,18 +93,18 @@ class ListManager: NSObject {
     }
 
     ///移除所有
-    func removeAll() {
+    open func removeAll() {
         _itemKeyValues.removeAll()
         adapter?.performUpdates(animated: true, completion: nil)
     }
 
     ///移除 数据
-    func remove(_ item: CollectionManager) {
+    open func remove(_ item: CollectionManager) {
         _itemKeyValues.removeValue(forKey: item.identifier)
         adapter?.performUpdates(animated: true, completion: nil)
     }
     ///移除 数据组
-    func remove(_ items: [CollectionManager]) {
+    open func remove(_ items: [CollectionManager]) {
         if items.count == 0 {
             return
         }
@@ -116,8 +116,7 @@ class ListManager: NSObject {
 }
 
 extension ListManager: ListAdapterDataSource {
-
-    func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
+    public func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
         var tmpItems: [ListDiffable] = []
         if _itemKeyValues.count == 0 {
             return tmpItems
@@ -133,7 +132,7 @@ extension ListManager: ListAdapterDataSource {
         return tmpItems
     }
 
-    func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
+    public func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         var find = false
         var myCollectionManager: CollectionManager?
         for (_ ,collectionManager) in _itemKeyValues {
@@ -156,11 +155,12 @@ extension ListManager: ListAdapterDataSource {
         if let sectionController = myCollectionManager?.sectionController {
             return sectionController()
         } else {
-            return RowSectionController()
+//            return RowSectionController()
+            return ListSectionController()
         }
     }
 
-    func emptyView(for listAdapter: ListAdapter) -> UIView? {
+    public func emptyView(for listAdapter: ListAdapter) -> UIView? {
         return self.emptyView
     }
 }

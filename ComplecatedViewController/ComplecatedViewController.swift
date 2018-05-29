@@ -14,10 +14,9 @@
 
 import UIKit
 import IGListKit
-import Moya
-open class RootListViewController: UIViewController {
+open class ComplecatedViewController: UIViewController {
     /// IGListKit 需要用到
-    lazy var adapter: ListAdapter = {
+    open lazy var adapter: ListAdapter = {
         return ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 1)
     }()
 
@@ -25,7 +24,7 @@ open class RootListViewController: UIViewController {
     @IBOutlet public var collectionView: UICollectionView!
 
     /// 数据配置工具
-    lazy var listManager: ListManager = {
+    open lazy var listManager: ListManager = {
         return ListManager(Date().description, adapter: self.adapter)
     }()
 
